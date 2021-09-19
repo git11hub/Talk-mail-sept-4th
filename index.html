@@ -1854,8 +1854,177 @@
       </div>
     </div>
 
-    <!-- Modal Insert Style (Last Section) -->
+    <!-- Modal Insert Style (Last Section with Popup) -->
     <div style="display:none" class="modal-content insert-style">
+      <div class="">
+        <div class="camera-permission" style="background:rgba(255, 192, 203, 0.198); overflow:hidden; border:none">
+
+          <div style="margin-top:87px; background:rgba(255, 192, 203, 0); width:892px; height:473px">
+            <div style="height:380px; background:white; margin:auto; width:40%; border-radius:25px; box-shadow: 0px 3px 15px 1px #888888">
+              <div class="container"
+                style="position:relative; top:20px; border:none; width:250px;height:182px; margin:auto; border-radius:15px; overflow:hidden; border:5px solid gray">
+                <div class="c-video">
+                  <video class="videoNew" src="media/movie.mp4"></video>
+                </div>
+                <div style="position: relative; top:-120px;left:10px">
+                  <i style="font-size:30px; color:white" class="fas fa-play"></i>
+                </div>
+              </div>
+
+              <div style="text-align: left; margin-top:60px; margin-left:60px">
+                <small
+                  style="position:relative;top:-20px; font-family:Poppins;font-style:normal;font-weight:500; font-size:12px;text-align:center">Lorem
+                  ipsum dolor sit amet, consectetur</small><br>
+                <small
+                  style="position:relative;top:-20px; font-family:Poppins;font-style:normal;font-weight:500; font-size:12px;text-align:center">Lorem
+                  ipsum dolor sit amet</small>
+              </div>
+
+              <div style="display:flex; margin-left:50px">
+                <div style="height:65px;width:65px; border:1px solid lightgray; border-radius:5px">
+                  <i style="font-size:37px; padding:15px" class="fas fa-user-md"></i>
+                </div>
+
+                <div style="margin-left:50px; margin-top:-20px">
+                  <h3 style="font-family:Poppins;font-style:normal;font-weight:600; font-size:18px;">Reply by TalkMail?
+                  </h3>
+                  <div style="display:flex">
+                    <button
+                      style="border:1px solid lightgray; border-radius:5px;padding:5px; width:45px; cursor:pointer">Yes</button>
+                    <button
+                      style="border:1px solid lightgray; border-radius:5px;padding:5px; width:45px; margin-left:10px; cursor:pointer">No</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div style="position:relative;top:10px">
+              <div style="">
+                <small style="font-family:Poppins;font-size:12px;font-weight:800">Insert Style 3</small>
+                <button id="change-btn-last-sec"
+                  style="border:none; background-color:#F2E9E9;padding:10px; margin-left:150px; border-radius:25px;cursor:pointer">Change</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Popup Edit Modal Here -->
+          <div style="display:block" class="trim-modal">
+            <div
+              style="background:white;width:500px; height:570px;overflow: auto; margin-top: -10px;margin-left:50px; border-radius:20px; box-shadow: 0px 5px 20px 10px #888888;">
+              <div style="height:40px">
+                <h3 style="margin:20px">Select Insert Style</h3>
+              </div>
+              <div style="height:400px; background:lightgray">
+                <div class="slideshow-container">
+
+                  <div class="mySlides fade">
+                    <div style="height:300px; width:55%; background:white; margin:auto; border-radius:20px; position:relative; top:30px; box-shadow: 0px 5px 20px 10px #888888">
+                      <div style="height:150px; width:200px; border:2px solid gray; border-radius:20px; margin:auto; top:50px; overflow:hidden; position:relative">
+                        <video style="width:100%" src="media/movie.mp4"></video>
+                        <i style="color:white; position:relative; top:-80px" class="fas fa-play"></i>
+                      </div>
+                    </div>
+                    <div class="text" style="color:black">Simple Video Thumbnail</div>
+                    <div class="text" style="color:black;margin-top:20px"><strong>Style 1</strong></div>
+                  </div>
+                  
+                  <div class="mySlides fade">
+                    <div style="height:300px; width:55%; background:white; margin:auto; border-radius:20px; position:relative; top:30px; box-shadow: 0px 5px 20px 10px #888888">
+                      <div style="height:150px; width:200px; border:2px solid gray; border-radius:20px; margin:auto; top:50px; overflow:hidden; position:relative">
+                        <video style="width:100%" src="media/movie.mp4"></video>
+                        <i style="color:white; position:relative; top:-80px" class="fas fa-play"></i>
+                      </div>
+                    </div>
+                    <div class="text" style="color:black">Simple Video Thumbnail</div>
+                    <div class="text" style="color:black;margin-top:20px"><strong>Style 2</strong></div>
+                  </div>
+                  
+                  <div class="mySlides fade">
+                    <div style="height:300px; width:55%; background:white; margin:auto; border-radius:20px; position:relative; top:30px; box-shadow: 0px 5px 20px 10px #888888">
+                      <div style="height:150px; width:200px; border:2px solid gray; border-radius:20px; margin:auto; top:50px; overflow:hidden; position:relative">
+                        <video style="width:100%" src="media/movie.mp4"></video>
+                        <i style="color:white; position:relative; top:-80px" class="fas fa-play"></i>
+                      </div>
+                    </div>
+                    <div class="text" style="color:black">Simple Video Thumbnail</div>
+                    <div class="text" style="color:black;margin-top:20px"><strong>Style 3</strong></div>
+                  </div>
+                  
+                  <a class="prev" style="margin-left:-250px" onclick="plusSlides(-1)">&#10094;</a>
+                  <a class="next" onclick="plusSlides(1)">&#10095;</a>
+                  
+                  </div>
+                  <br>
+                  
+                  <div style="text-align:center; margin-top:100px">
+                    <span class="dot" onclick="currentSlide(1)"></span> 
+                    <span class="dot" onclick="currentSlide(2)"></span> 
+                    <span class="dot" onclick="currentSlide(3)"></span> 
+                  </div>
+              </div>
+              <div>
+                <button
+                  style="border-radius:26px; background:#E20C9A; padding:10px; margin-left:350px;margin-top:10px; border:none; color:white; width:100px; cursor:pointer"
+                  class="trim-cross">Save
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div style="display:flex;height:111px; position:relative;background:white">
+
+            <div style="display:flex;margin-left:40px">
+              <i style="font-size:30px; margin-left:50px; margin-top:15px; cursor:pointer" class="fas fa-arrow-left"
+                onclick="showHide(id={hide:'insert-style',show:'finishing-touches'})"></i>
+              <div style="display:flex; margin-left:156px">
+                <div style="display:flex">
+                  <i style="font-size:25px; padding:10px; color:#E20C9A; margin-top:5px"
+                    class="fas fa-check-circle"></i>
+                  <h4 style="color:black">Record</h4>
+                  <div style="position:relative; left:8px;top:8px">
+                    <hr style="width:50px; border:1px solid #707070; margin-top:20px">
+                  </div>
+                </div>
+                <div style="display:flex; margin-left:20px">
+                  <div style="margin-top:-4px">
+                      <i style="font-size:25px; padding:10px; color:#E20C9A; margin-top:10px; margin-left:-10px"
+                    class="fas fa-check-circle"></i>
+                  </div>
+                  <h4 style="color:black">Edit</h4>
+                  <div style="position:relative; left:8px;top:8px">
+                    <hr style="width:50px; border:1px solid #707070; margin-top:20px">
+                  </div>
+                </div>
+                <div style="display:flex; margin-left:20px">
+                  <div style="margin-top:-4px">
+                    <h4
+                      style="background:#E20C9A; color:white; font-size:15px; border-radius:15px;padding:4px; width:17px">
+                      3</h4>
+                  </div>
+                  <h4 style="color:black; margin-left:10px">Insert</h4>
+                </div>
+              </div>
+            </div>
+
+            <button
+              style="border-radius:25px;width:156px;height:45px;margin-left:50px; background: radial-gradient(85.34% 99% at 4.68% 109%, #FF6363 0%, #E20C9A 100%); padding:12px 24px"
+              class="start-btn"><span style="font-family:Poppins;font-weight:800; font-size:14;color:white">Insert
+                TalkMail</span>
+            </button>
+          </div>
+        </div>
+
+        <div style="position:relative;top:-225px">
+          <div style="margin-top: -465px; margin-left: 879px" class="cross">
+            <i class="fas fa-times"></i>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Modal Insert Style (Last Section) -->
+    <!-- <div style="display:none" class="modal-content insert-style">
       <div class="">
         <div class="camera-permission" style="background:rgba(255, 192, 203, 0.198); overflow:hidden; border:none">
 
@@ -1900,14 +2069,6 @@
 
             </div>
 
-            <!-- <div class="container" style="border:none; width:343px;height:282px; margin:auto; border-radius:15px; overflow:hidden">
-                <div class="c-video">
-                  <video class="videoNew" src="media/movie.mp4"></video>
-                </div>
-                <div style="position: relative; top:-165px;left:20px">
-                  <i style="font-size:30px; color:white" class="fas fa-play"></i>
-                </div>
-              </div> -->
 
             <div style="position:relative;top:10px">
               <div style="">
@@ -1915,12 +2076,6 @@
                 <button id="change-btn-last-sec"
                   style="border:none; background-color:#F2E9E9;padding:10px; margin-left:150px; border-radius:25px;cursor:pointer">Change</button>
               </div>
-              <!-- <div style="position: relative; top:10px;left:20px">
-                <small style="font-family:Poppins;font-size:12px;font-weight:800">Thumbnail:
-                  <strong>Automatic</strong></small>
-                <button style="border:none; background-color:#F2E9E9;padding:10px;border-radius:25px;cursor:pointer"
-                  onclick="showHide(id={hide:'insert-style',show:'finishing-touches-edit'})">Change</button>
-              </div> -->
             </div>
           </div>
 
@@ -1940,9 +2095,6 @@
                 </div>
                 <div style="display:flex; margin-left:20px">
                   <div style="margin-top:-4px">
-                    <!-- <h4
-                      style="background:#E20C9A; color:white; font-size:15px; border-radius:15px;padding:4px; width:17px">
-                      2</h4> -->
                       <i style="font-size:25px; padding:10px; color:#E20C9A; margin-top:10px; margin-left:-10px"
                     class="fas fa-check-circle"></i>
                   </div>
@@ -1977,7 +2129,9 @@
         </div>
 
       </div>
-    </div>
+    </div> -->
+
+
 
     <!-- Popup after Change button click from last section (no.3 popup) -->
     <div id="popUp-modal-after-change-click" class="trim-modal">
@@ -2812,6 +2966,35 @@
 //   }
 
 //   videoNew.addEventListener('timeupdate', currentTime)
+
+
+// Carousel
+var slideIndex = 1;
+showSlides(slideIndex);
+
+function plusSlides(n) {
+  showSlides(slideIndex += n);
+}
+
+function currentSlide(n) {
+  showSlides(slideIndex = n);
+}
+
+function showSlides(n) {
+  var i;
+  var slides = document.getElementsByClassName("mySlides");
+  var dots = document.getElementsByClassName("dot");
+  if (n > slides.length) {slideIndex = 1}    
+  if (n < 1) {slideIndex = slides.length}
+  for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";  
+  }
+  for (i = 0; i < dots.length; i++) {
+      dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[slideIndex-1].style.display = "block";  
+  dots[slideIndex-1].className += " active";
+}
 
     </script>
 </body>
