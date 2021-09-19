@@ -1,0 +1,2819 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js"></script>
+  <title>Document</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap" rel="stylesheet">
+
+  <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" crossorigin="anonymous"> -->
+  <style>
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    /* The Modal (background) */
+    .modal {
+      display: none;
+      /* Hidden by default */
+      position: fixed;
+      /* Stay in place */
+      z-index: 1;
+      /* Sit on top */
+      padding-top: 40px;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      /* Enable scroll if needed */
+      background-color: rgba(0, 0, 0, 0.1);
+      /* Black w/ opacity */
+    }
+
+    .trim-modal {
+      display: none;
+      position: fixed;
+      z-index: 1;
+      padding-top: 40px;
+      left: 640px;
+      top: 0px;
+      width: 650px;
+      height: 620px;
+      overflow: auto;
+    }
+
+    .attach-video-modal {
+      display: none;
+      position: fixed;
+      z-index: 1;
+      padding-top: 40px;
+      left: 640px;
+      top: 0px;
+      width: 650px;
+      height: 620px;
+      overflow: auto;
+    }
+
+
+    /* Modal Content */
+    .modal-content {
+      background-color: white;
+      margin: auto;
+      width: 892px;
+      height: 670px;
+      border-radius: 20px;
+    }
+
+    /* Modal Content */
+    .modal-content3 {
+      background-color: #fefefe;
+      margin: auto;
+      width: 640px;
+      height: 480px;
+      border-radius: 20px;
+    }
+
+    .button-red {
+      background-color: red;
+      /* Red */
+      border: none;
+      color: white;
+      padding: 15px 32px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin: 4px 2px;
+      cursor: pointer;
+      border-radius: 5px;
+      margin-top: 650px;
+      margin-left: 1300px;
+      /* margin-left: 100px; */
+    }
+  </style>
+</head>
+
+<body>
+
+
+  <button id="myBtn" class="button-red">Talk Mail</button>
+
+  <!-- The Modal -->
+  <div id="myModal" class="modal">
+
+    <!-- Modal First Section (Record Section) -->
+    <div class="first-section modal-content">
+      <div style="width:892px; height:670px;position:relative; overflow:hidden; border-radius:20px">
+        <video muted id="videoElement" autoplay
+          style="background-image: linear-gradient(black, white, black); width:1200px; margin-top:-115px">
+          <source src="media/sampleVideo.mkv" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+      <div class="icons">
+        <i onclick="showHide(id={hide:'first-section',show:'second-section'})" style="cursor: pointer; left:451px"
+          class="fas fa-circle record"></i>
+        <span style="color:white; position: relative; top:80px">Record</span>
+      </div>
+
+      <div style="position:relative;top:-140px">
+        <div style="margin-top: -425px; margin-left: 880px" class="cross">
+          <i class="fas fa-times"></i>
+        </div>
+      </div>
+
+      <button class="enhance" style="cursor:pointer; position:relative; left:-240px;top:40px; width:130px"
+        onclick="showHide(id={hide:'first-section',show:'select-record-type'})">Video/Audio</button>
+      <button class="enhance" style="cursor:pointer; position:relative; left:100px;top:40px; width:130px"
+        onclick="showHide(id={hide:'first-section',show:'branding'})">No Branding</button>
+    </div>
+
+    <!-- Modal Select Record Type -->
+    <div style="display:none" class="modal-content select-record-type">
+      <div class="">
+        <div class="camera-permission">
+          <h2>Select Record Type</h2>
+          <small style="color: gray; position:relative;">What makes TalkMail look-like in your Email</small>
+          <div
+            style="display:flex;margin-top:50px; margin:auto; width:892px; height:473px; background-color:rgba(247, 247, 247, 0.72);">
+            <div style="margin-left:250px;margin-top:100px; margin-right:10px">
+              <img id="video-active" onclick="videoActive()" style="width:175px; cursor:pointer" src="/media/video.png"
+                alt="talk-mail type">
+              <img id="video-inactive" onclick="videoInactive()" style="width:175px;display:none; cursor:pointer"
+                src="/media/videoOff.png" alt="talk-mail type">
+            </div>
+
+            <div style="margin-top:100px">
+              <img id="audio-active" onclick="audioActive()" style="width:175px; cursor:pointer" src="/media/audio.png"
+                alt="talk-mail type">
+              <img id="audio-inactive" onclick="audioInactive()" style="width:175px;display:none; cursor:pointer"
+                src="/media/audioOff.png" alt="talk-mail type">
+            </div>
+          </div>
+
+          <div style="position:relative;top:-167px">
+            <div style="margin-top:-390px" class="setting">
+              <i class="fas fa-cog"></i>
+            </div>
+            <div style="margin-top: -415px; margin-left: 878px" class="cross">
+              <i class="fas fa-times"></i>
+            </div>
+          </div>
+          <button style="margin-top:15px; border-radius:25px" class="start-btn"
+            onclick="showHide(id={hide:'select-record-type',show:'first-section'})">Cancel</button>
+          <button style="margin-top:15px; border-radius:25px" class="start-btn"
+            onclick="showHide(id={hide:'select-record-type',show:'first-section'})">Save</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal Branding (Branding Style)-->
+    <div style="display:none" class="modal-content branding">
+      <div class="">
+        <div class="camera-permission">
+          <h1>Branding</h1>
+          <div style="height:473px; background-color:rgba(211, 211, 211, 0.164)">
+            <div style="display:flex; margin-left:310px">
+              <h4>Branding Style</h4>
+              <h4 style="color:lightgray;margin-left:10px;cursor:pointer"
+                onclick="showHide(id={hide:'branding',show:'branding-assets'})">Branding Assets</h4>
+            </div>
+            <hr style="width:50px;margin-left:340px;margin-top:-10px;border:1px solid">
+
+            <div style="display:flex;margin-top:120px; margin-left:70px">
+              <div style="margin-left:40px; margin-right:10px">
+                <img style="width:100%;cursor:pointer" src="/media/noBranding.png" alt="talk-mail type">
+              </div>
+
+              <div style="margin-right:10px">
+                <img onclick="showHide(id={hide:'branding',show:'branding-stripe-1-active'})"
+                  style="width:100%;cursor:pointer" src="/media/stripe1InActive.png" alt="talk-mail type">
+              </div>
+
+              <div style="margin-right:40px">
+                <img onclick="showHide(id={hide:'branding',show:'branding-stripe-2-active'})"
+                  style="width:100%;cursor:pointer" src="/media/stripe2InActive.png" alt="talk-mail type">
+              </div>
+            </div>
+          </div>
+
+          <div style="position:relative;top:-161px;left:-1px">
+            <div style="margin-top:-390px" class="setting">
+              <i class="fas fa-cog"></i>
+            </div>
+            <div style="margin-top: -415px; margin-left: 879px" class="cross">
+              <i class="fas fa-times"></i>
+            </div>
+          </div>
+
+          <button style="margin-top:15px; border-radius:25px;background:#F2E9E9;color:black" class="start-btn"
+            onclick="showHide(id={hide:'branding',show:'first-section'})">Cancel</button>
+          <button
+            style="margin-top:15px; border-radius:25px;background: radial-gradient(85.34% 99% at 4.68% 109%, #FF6363 0%, #E20C9A 100%);color:white"
+            class="start-btn" onclick="showHide(id={hide:'branding',show:'first-section'})">Save</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal Branding (Branding Assets)-->
+    <div style="display:none" class="modal-content branding-assets">
+      <div class="">
+        <div class="camera-permission">
+          <h1>Branding</h1>
+          <div style="height:473px;background-color:rgba(211, 211, 211, 0.164)">
+            <div style="display:flex; margin-left:310px">
+              <h4 style="color:lightgray;margin-right:10px;cursor:pointer"
+                onclick="showHide(id={hide:'branding-assets',show:'branding'})">Branding Style</h4>
+              <h4>Branding Assets</h4>
+            </div>
+            <hr style="width:50px;margin-left:470px;margin-top:-10px;border:1px solid">
+
+            <div style="display:flex;margin-top:50px">
+
+              <div
+                style="position:relative; background-color:white;width:389px;height:346px;margin:auto;border-radius: 25px;">
+                <div style="margin-top:39px;margin-left:45px; display:flex">
+                  <img style="margin-bottom:10px" src="./media/branding-assets/upload-icon.png" alt=""><br>
+                  <button
+                    style="background:#F2E9E9;border-radius: 26px;border:none;padding:7px 16px; width:108px; height:32px; margin-left:28px"><strong
+                      style="font-family:Poppins;font-style:normal; font-weight:700; font-size:12px">Upload
+                      Logo</strong></button>
+                </div>
+
+                <div style="">
+                  <small
+                    style="font-family:Poppins; font-style:normal; font-weight:600;font-size:10px; position:relative;left:-95px;top:15px">Brand
+                    Color</small>
+                  <div style="display:flex">
+                    <img style="height:16px;width:16px; position:relative; top:20px;left:45px"
+                      src="./media/branding-assets/red-circle.png" alt="">
+                    <h5
+                      style="position:relative; left:55px; font-family:Poppins; font-style:normal; font-weight:900;font-size:12px; color:black">
+                      EB248B</h5>
+                  </div>
+                </div>
+
+                <div style="margin-left:24px">
+                  <input
+                    style="font-family:Poppins; font-weight:600;font-size:12px; border:none; width:341px;height:40px; background:rgba(128, 128, 128, 0.055);border-radius:25px;text-indent:15px"
+                    type="text" placeholder="Brand Name">
+                </div>
+                <div style="margin-left:24px;margin-top:20px">
+                  <input
+                    style="font-family:Poppins; font-weight:600;font-size:12px; border:none; width:341px;height:40px; background:rgba(128, 128, 128, 0.055);border-radius:25px;text-indent:15px"
+                    type="text" placeholder="Your Name">
+                </div>
+                <div style="margin-left:24px;margin-top:20px">
+                  <input
+                    style="font-family:Poppins; font-weight:600;font-size:12px; border:none; width:341px;height:40px; background:rgba(128, 128, 128, 0.055);border-radius:25px;text-indent:15px"
+                    type="text" placeholder="Your Role">
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+          <div style="position:relative;top:-161px">
+            <div style="margin-top:-390px;margin-left:4px" class="setting">
+              <i class="fas fa-cog"></i>
+            </div>
+            <div style="margin-top: -415px; margin-left: 878px" class="cross">
+              <i class="fas fa-times"></i>
+            </div>
+          </div>
+
+          <button style="margin-top:15px; border-radius:25px; background:#F2E9E9;color:black" class="start-btn"
+            onclick="showHide(id={hide:'branding-assets',show:'first-section'})">Cancel</button>
+          <button
+            style="margin-top:15px; border-radius:25px;background: radial-gradient(85.34% 99% at 4.68% 109%, #FF6363 0%, #E20C9A 100%);color:white"
+            class="start-btn" onclick="showHide(id={hide:'branding-assets',show:'first-section'})">Save</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal Branding Stripe-1 Active -->
+    <div style="display:none" class="modal-content branding-stripe-1-active">
+      <div class="">
+        <div class="camera-permission">
+          <h1>Branding</h1>
+          <div style="height:473px;background-color:rgba(211, 211, 211, 0.164)">
+            <div style="display:flex; margin-left:310px">
+              <h4>Branding Style</h4>
+              <h4 style="color:lightgray;margin-left:10px; cursor:pointer"
+                onclick="showHide(id={hide:'branding-stripe-1-active',show:'branding-assets'})">Branding Assets</h4>
+            </div>
+            <hr style="width:50px;margin-left:340px;margin-top:-10px;border:1px solid">
+
+            <div style="display:flex;margin-top:120px; margin-left:70px">
+              <div style="margin-left:40px; margin-right:10px">
+                <img onclick="showHide(id={hide:'branding-stripe-1-active',show:'branding'})"
+                  style="width:100%;cursor:pointer" src="/media/noBrandingInActive.png" alt="talk-mail type">
+              </div>
+
+              <div style="margin-right:10px">
+                <img style="width:100%;cursor:pointer" src="/media/stripe1.png" alt="talk-mail type">
+              </div>
+
+              <div style="margin-right:40px">
+                <img onclick="showHide(id={hide:'branding-stripe-1-active',show:'branding-stripe-2-active'})"
+                  style="width:100%;cursor:pointer" src="/media/stripe2InActive.png" alt="talk-mail type">
+              </div>
+            </div>
+          </div>
+
+          <div style="position:relative;top:-161px">
+            <div style="margin-top:-390px;margin-left:4px" class="setting">
+              <i class="fas fa-cog"></i>
+            </div>
+            <div style="margin-top: -415px; margin-left: 878px" class="cross">
+              <i class="fas fa-times"></i>
+            </div>
+          </div>
+
+          <button style="margin-top:15px; border-radius:25px;background:#F2E9E9;color:black" class="start-btn"
+            onclick="showHide(id={hide:'branding-stripe-1-active',show:'first-section'})">Cancel</button>
+          <button
+            style="margin-top:15px; border-radius:25px;background: radial-gradient(85.34% 99% at 4.68% 109%, #FF6363 0%, #E20C9A 100%);color:white"
+            class="start-btn"
+            onclick="showHide(id={hide:'branding-stripe-1-active',show:'first-section'})">Save</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal Branding Stripe-2 Active -->
+    <div style="display:none" class="modal-content branding-stripe-2-active">
+      <div class="">
+        <div class="camera-permission">
+          <h1>Branding</h1>
+          <div style="height:473px;background-color:rgba(211, 211, 211, 0.164)">
+            <div style="display:flex; margin-left:310px">
+              <h4>Branding Style</h4>
+              <h4 style="color:lightgray;margin-left:10px; cursor:pointer"
+                onclick="showHide(id={hide:'branding-stripe-2-active',show:'branding-assets'})">Branding Assets</h4>
+            </div>
+            <hr style="width:50px;margin-left:340px;margin-top:-10px;border:1px solid">
+
+            <div style="display:flex;margin-top:120px; margin-left:70px">
+              <div style="margin-left:40px; margin-right:10px">
+                <img onclick="showHide(id={hide:'branding-stripe-2-active',show:'branding'})"
+                  style="width:100%;cursor:pointer" src="/media/noBrandingInActive.png" alt="talk-mail type">
+              </div>
+
+              <div style="margin-right:10px">
+                <img onclick="showHide(id={hide:'branding-stripe-2-active',show:'branding-stripe-1-active'})"
+                  style="width:100%;cursor:pointer" src="/media/stripe1InActive.png" alt="talk-mail type">
+              </div>
+
+              <div style="margin-right:40px">
+                <img style="width:100%;cursor:pointer" src="/media/stripe2.png" alt="talk-mail type">
+              </div>
+            </div>
+          </div>
+
+          <div style="position:relative;top:-160px">
+            <div style="margin-top:-391px;margin-left:4px" class="setting">
+              <i class="fas fa-cog"></i>
+            </div>
+            <div style="margin-top: -416px; margin-left: 878px" class="cross">
+              <i class="fas fa-times"></i>
+            </div>
+          </div>
+
+          <button style="margin-top:15px; border-radius:25px;background:#F2E9E9;color:black" class="start-btn"
+            onclick="showHide(id={hide:'branding-stripe-2-active',show:'first-section'})">Cancel</button>
+          <button
+            style="margin-top:15px; border-radius:25px;background: radial-gradient(85.34% 99% at 4.68% 109%, #FF6363 0%, #E20C9A 100%);color:white"
+            class="start-btn"
+            onclick="showHide(id={hide:'branding-stripe-2-active',show:'first-section'})">Save</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal TalkMail Type -->
+    <div style="display:none" class="modal-content modal-talk-mail-type">
+      <div class="">
+        <div class="camera-permission">
+          <h1 style="font-family:Poppins; font-style:normal; font-weight:900; font-size:32px">Select Your TalkMail Type
+          </h1>
+          <small
+            style="position:relative; font-family:Poppins;font-style:normal;font-weight:500; font-size:12px;text-align:center">Self
+            video viewers record responses at anytime</small>
+          <div style="margin-top:30px; width:892px;height:473px; background-color: rgba(247, 247, 247, 0.72);">
+            <div style="display:flex; position:relative; left:120px;top:40px">
+              <div style="background-color:white; width:241.33; height:371px; border-radius:25px; margin:10px">
+                <div style="height:150px;width:200px">
+                  <img style="width:200px" src="/media/rectangle1.png" alt="talk-mail type">
+                  <img style="width:80px; top:-100px; position:relative" src="/media/simpleTalkMail.png" alt="">
+                </div>
+
+                <div style="">
+                  <div>
+                    <h5>Simple TalkMail</h5>
+                    <small style="color:gray">Self Video anyone can see</small>
+                  </div><br>
+                  <button style="margin-top:15px; border-radius:25px" class="start-btn"
+                    onclick="showHide(id={hide:'modal-talk-mail-type',show:'simple-talk-mail'})">Select</button>
+                </div>
+              </div>
+
+              <div style="background-color:white; width:241.33; height:371px; border-radius:25px; margin:10px">
+                <div style="height:160px;width:200px">
+                  <img style="width:200px" src="/media/rectangle2.png" alt="talk-mail type">
+                  <img style="width:80px; top:-100px; position:relative;" src="/media/selfDestuctTalkMail.png" alt="">
+                </div>
+
+                <div>
+                  <div>
+                    <h5>Self-Destruct TalkMail</h5>
+                    <small style="color:gray">Self Video One-time viewing</small>
+                  </div><br>
+                  <button style="margin-top:15px; border-radius:25px" class="start-btn"
+                    onclick="showHide(id={hide:'modal-talk-mail-type',show:'self-destruct-talk-mail'})">Select</button>
+                </div>
+              </div>
+
+              <div style="background-color:white; width:241.33; height:371px; border-radius:25px; margin:10px">
+                <div style="height:160px;width:200px">
+                  <img style="width:200px" src="/media/rectangle3.png" alt="talk-mail type">
+                  <img style="width:80px; top:-100px;left:30px; position:relative;"
+                    src="/media/gropFeedBackTalkMail.png" alt="">
+                  <button
+                    style="border-radius: 25px;padding:5px; background-color:white; top:-180px;left:10px; position:relative;border-style: none;width:40px; font-size:12px">New</button>
+                </div>
+
+                <div>
+                  <div style="width:200px">
+                    <h5>Group-feedBack TalkMail</h5>
+                    <small style="color:gray">Self video viewers record responses at anytime</small>
+                  </div>
+                  <button style="margin-top:15px; border-radius:25px" class="start-btn"
+                    onclick="showHide(id={hide:'modal-talk-mail-type',show:'group-feedback-talk-mail'})">Select</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+          <div style="position:relative; top:-250px">
+            <i style="position:relative;left:-380px; font-size: 30px;color:lightgray" class="fas fa-angle-left"></i>
+            <i style="position:relative;left:380px; font-size: 30px" class="fas fa-angle-right"></i>
+          </div>
+
+          <img style="position:relative; top:-30px" src="/media/sliderDot.PNG" alt="">
+
+          <div style="position:relative;top:-275px">
+            <div style="margin-top:-390px; margin-left:4px" class="setting">
+              <i class="fas fa-cog"></i>
+            </div>
+            <div style="margin-top: -415px; margin-left: 879px" class="cross">
+              <i class="fas fa-times"></i>
+            </div>
+          </div>
+
+
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal Single Simple TalkMail -->
+    <div style="display:none" class="modal-content simple-talk-mail">
+      <div class="">
+        <div class="camera-permission">
+          <h1 style="font-family:Poppins; font-style:normal; font-weight:900; font-size:32px">Select Your TalkMail Type
+          </h1>
+          <small
+            style="position:relative; font-family:Poppins;font-style:normal;font-weight:500; font-size:12px;text-align:center">Self
+            video viewers record responses at anytime</small>
+          <div
+            style="display:flex;margin-top:10px; background-color:rgba(247, 247, 247, 0.72); width:892px; height:473px">
+            <div style="margin-left:220px; margin-top:140px; margin:auto; width:50%">
+              <img style="width:310px" src="/media/simpleTalkmailFull.png" alt="talk-mail type"><br>
+              <small>You have selected simple TalkMail. <span style="color:blue; cursor:pointer"
+                  onclick="showHide(id={hide:'simple-talk-mail',show:'modal-talk-mail-type'})">Change</span></small>
+            </div>
+          </div>
+
+          <div style="">
+            <button style="border-radius:25px" class="start-btn"
+              onclick="showHide(id={hide:'simple-talk-mail',show:'first-section'})">Let's Begin</button>
+          </div>
+
+          <div style="position:relative;top:-257px">
+            <div style="margin-top:-390px;margin-left:4px" class="setting">
+              <i class="fas fa-cog"></i>
+            </div>
+            <div style="margin-top: -415px; margin-left: 879px" class="cross">
+              <i class="fas fa-times"></i>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal Single Self Destruct TalkMail -->
+    <div style="display:none" class="modal-content self-destruct-talk-mail">
+      <div class="">
+        <div class="camera-permission">
+          <h1 style="font-family:Poppins; font-style:normal; font-weight:900; font-size:32px">Select Your TalkMail Type
+          </h1>
+          <small
+            style="position:relative; font-family:Poppins;font-style:normal;font-weight:500; font-size:12px;text-align:center">Self
+            video viewers record responses at anytime</small>
+          <div
+            style="display:flex;margin-top:10px; background-color:rgba(247, 247, 247, 0.72); width:892px; height:473px">
+            <div style="margin-left:220px; margin-top:140px; margin:auto; width:50%">
+              <img style="width:310px" src="/media/selfDestructFull.png" alt="talk-mail type"><br>
+              <small>You have selected simple TalkMail. <span style="color:blue; cursor:pointer"
+                  onclick="showHide(id={hide:'self-destruct-talk-mail',show:'modal-talk-mail-type'})">Change</span></small>
+            </div>
+          </div>
+
+          <div>
+            <button style="margin-top:15px; border-radius:25px" class="start-btn"
+              onclick="showHide(id={hide:'self-destruct-talk-mail',show:'first-section'})">Let's Begin</button>
+          </div>
+
+          <div style="position:relative;top:-268px">
+            <div style="margin-top:-390px;margin-left:4px" class="setting">
+              <i class="fas fa-cog"></i>
+            </div>
+            <div style="margin-top: -415px; margin-left: 879px" class="cross">
+              <i class="fas fa-times"></i>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal Single Group Feedback TalkMail -->
+    <div style="display:none" class="modal-content group-feedback-talk-mail">
+      <div class="">
+        <div class="camera-permission">
+          <h1 style="font-family:Poppins; font-style:normal; font-weight:900; font-size:32px">Select Your TalkMail Type
+          </h1>
+          <small
+            style="position:relative; font-family:Poppins;font-style:normal;font-weight:500; font-size:12px;text-align:center">Self
+            video viewers record responses at anytime</small>
+          <div
+            style="display:flex;margin-top:10px; background-color:rgba(247, 247, 247, 0.72); width:892px; height:473px">
+            <div style="margin-left:220px; margin-top:140px; margin:auto; width:50%">
+              <img style="width:310px" src="/media/groupFeedbackFull.png" alt="talk-mail type"><br>
+              <small>You have selected simple TalkMail. <span style="color:blue; cursor:pointer"
+                  onclick="showHide(id={hide:'group-feedback-talk-mail',show:'modal-talk-mail-type'})">Change</span></small>
+            </div>
+          </div>
+
+          <div>
+            <button style="margin-top:15px; border-radius:25px" class="start-btn"
+              onclick="showHide(id={hide:'group-feedback-talk-mail',show:'first-section'})">Let's Begin</button>
+          </div>
+
+          <div style="position:relative;top:-268px">
+            <div style="margin-top:-390px;margin-left:4px" class="setting">
+              <i class="fas fa-cog"></i>
+            </div>
+            <div style="margin-top: -415px; margin-left: 879px" class="cross">
+              <i class="fas fa-times"></i>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal Second Section (Pause section) -->
+    <div style="display:none" class="second-section modal-content">
+      <div style="width:892px; height:670px;position:relative; overflow:hidden; border-radius:20px">
+        <video id="videoElement2" autoplay="true"
+          style="background-image: linear-gradient(black, white, black); width:1200px; margin-top:-115px">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+
+      <div style="display:flex; position: relative; margin-left: 413px; margin-top:-200px;" class="time">
+        <i style="color:red; margin-top: 17px; margin-right:5px" class="fas fa-circle"></i>
+        <p style="color:white">04:27</p>
+      </div>
+
+      <div class="icons" style="display:flex; top:150px;left:296px">
+        <div>
+          <button
+            style="border-radius:25px; position:relative; display:block; width:148px; background: rgba(255, 255, 255, 0.2);"
+            class="start-btn" id="pause" onclick="myFunction()"><i style="color:white; margin-right:5px"
+              class="fas fa-pause"></i>Pause</button>
+          <button
+            style="border-radius:25px; position: relative; display:none; width:148px;background: rgba(255, 255, 255, 0.2);"
+            class="start-btn" id="continue" onclick="myFunctionC()"><i style="color:white; margin-right:5px"
+              class="fas fa-play"></i>Continue</button>
+        </div>
+        <button style="border-radius:25px; position: relative; width:148px; background: rgba(255, 255, 255, 0.2);"
+          class="start-btn" onclick="showHide(id={hide:'second-section',show:'finishing-touches'})">Stop</button>
+      </div>
+
+      <div style="position:relative;top:-38px">
+        <div style="margin-top:-390px" class="setting">
+          <i class="fas fa-cog"></i>
+        </div>
+        <div style="margin-top: -415px; margin-left: 880px" class="cross">
+          <i class="fas fa-times"></i>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Modal Finishing Touches (Final appearance)-->
+    <div style="display:none" class="modal-content finishing-touches">
+      <div class="">
+        <div class="camera-permission" style="background:rgba(255, 192, 203, 0.198); overflow:hidden; border:none">
+          <div style="width:892px; height:473px; background-color:rgba(255, 192, 203, 0); margin-top:87px">
+            <div class="container"
+              style="border:1px solid gray; width:343px;height:340px; margin:auto; border-radius:15px; overflow:hidden">
+              <div class="c-video">
+                <video class="videoNew" src="media/movie.mp4"></video>
+              </div>
+
+              <div class="controls" style="">
+                <div class="buttons" style="">
+                  <button id="play-pause"></button>
+                </div>
+                <div class="orange-bar">
+                  <div class="orange-juice"></div>
+                </div>
+
+                <div class="time" style="margin-left:10px">
+                  <span class="current">0:00</span><span style="margin-left:260px" class="duration">1:30</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- <div style="display:flex; margin-left:300px;margin-top:30px">
+              <button id="trim"
+                style="width:130px;height:37px; border:1px solid; border-radius:26px; background:white; font-family:Poppins; font-weight:800;font-size:14px; cursor:pointer"><i
+                  style="position:relative; left:-30px; font-size:16px" class="fas fa-cut"></i>Trim
+              </button>
+              <button id="attach-video-btn"
+                style="width:130px;height:37px; border:1px solid; border-radius:26px; background:white; margin-left:30px; font-family:Poppins; font-weight:800;font-size:14px; cursor:pointer"><i
+                  style="position:relative; left:-5px; font-size:16px" class="fas fa-plus-circle"></i>Attach
+                Video</button>
+            </div> -->
+            <div style="position:relative; display:flex; left:295px; top:20px">
+              <div id="edit-popup-btn" style="display:flex; cursor:pointer">
+                <i class="fas fa-film"></i>
+                <h4 style="margin-top:0px;margin-left:10px">Edit</h4>
+              </div>
+              <i onclick="dotToRemove()" id="dot" style="margin-left:240px; cursor:pointer"
+                class="fas fa-ellipsis-h"></i>
+              <div onclick="removeToDot()" id="dot-with-remove" style="display:none">
+                <i style="margin-left:230px; cursor:pointer" class="fas fa-ellipsis-h"></i><br>
+                <button style="margin-left:200px; cursor:pointer">Remove</button>
+              </div>
+            </div>
+
+            <div id="attach-video-popup-btn"
+              style="position:relative; cursor:pointer; width:200px; height:150px; background:white; left:650px; top:-320px; border:3px dotted gray; border-radius:25px">
+              <div style="margin-top:60px">
+                <i style="font-size:25px" class="fas fa-plus"></i>
+                <h4>Attach Video</h4>
+              </div>
+            </div>
+
+          </div>
+
+          <div style="display:flex; position:relative; background:white">
+            <div style="margin-left:100px; height:111px">
+              <i onclick="showHide(id={hide:'finishing-touches',show:'first-section'})"
+                style="position:relative; cursor:pointer;top:15px; font-size:20px" class="fas fa-trash"></i>
+              <button
+                style="border-radius:26px; height:45px; width:150px; color:black; background-color:#f2e9e900; border:none"
+                class=""><span style="font-family:Poppins; font-weight:800; font-size:14px"></span></button>
+            </div>
+
+            <!-- <div style="display:flex; position:relative; left:90px; top:15px">
+              <button style="width:90px; height:35px; border-radius:26px; border:1px solid green; background:green">
+                <span style="font-family:Poppins; font-weight:800;font-size:14px; color:white"><i style="padding:5px"
+                    class="fas fa-check"></i>Record</span>
+              </button>
+              <div style="position:relative; left:8px;top:8px">
+                <hr style="width:19px; border:2px solid #707070">
+              </div>
+
+              <button
+                style="width:80px; height:35px; border-radius:26px; border:1px solid green; background:white;margin-left:16px">
+                <span style="font-family:Poppins; font-weight:500;font-size:14px;color:green">Edit</span>
+              </button>
+              <div style="position:relative; left:8px;top:8px">
+                <hr style="width:19px; border:2px solid #707070">
+              </div>
+
+              <button
+                style="width:80px; height:35px; border-radius:26px; border:1px solid lightgray; background:white;margin-left:16px">
+                <span style="font-family:Poppins; font-weight:500;font-size:14px;color:#D6D6D6">Insert</span>
+              </button>
+            </div> -->
+            <div style="display:flex">
+              <div style="display:flex">
+                <i style="font-size:25px; padding:10px; color:#E20C9A; margin-top:5px" class="fas fa-check-circle"></i>
+                <h4 style="color:black">Record</h4>
+                <div style="position:relative; left:8px;top:8px">
+                  <hr style="width:50px; border:1px solid #707070; margin-top:20px">
+                </div>
+              </div>
+              <div style="display:flex; margin-left:20px">
+                <!-- <i style="font-size:25px; padding:10px; color:#E20C9A; margin-top:5px" class="fas fa-check-circle"></i> -->
+                <div style="margin-top:-4px">
+                  <h4
+                    style="background:#E20C9A; color:white; font-size:15px; border-radius:15px;padding:4px; width:17px">
+                    2</h4>
+                </div>
+                <h4 style="color:black; margin-left:10px">Edit</h4>
+                <div style="position:relative; left:8px;top:8px">
+                  <hr style="width:50px; border:1px solid #707070; margin-top:20px">
+                </div>
+              </div>
+              <div style="display:flex; margin-left:20px">
+                <!-- <i style="font-size:25px; padding:10px; color:#E20C9A; margin-top:5px" class="fas fa-check-circle"></i> -->
+                <div style="margin-top:-4px">
+                  <h4 style="background:gray; color:white; font-size:15px; border-radius:15px;padding:4px; width:17px">3
+                  </h4>
+                </div>
+                <h4 style="color:black; margin-left:10px">Insert</h4>
+              </div>
+            </div>
+
+            <i style="font-size:30px; margin-left:100px; margin-top:15px; cursor:pointer" class="fas fa-arrow-right"
+              onclick="showHide(id={hide:'finishing-touches',show:'insert-style'})"></i>
+          </div>
+        </div>
+
+        <div style="position:relative;top:-225px">
+          <!-- <div style="margin-top:-390px;margin-left:4px" class="setting">
+            <i class="fas fa-cog"></i>
+          </div> -->
+          <div style="margin-top: -465px; margin-left: 879px" class="cross">
+            <i class="fas fa-times"></i>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Popup Edit Modal Here -->
+    <div id="popUpForEdit" class="trim-modal">
+      <div
+        style="background:white;width:500px; height:570px;overflow: auto; margin-top: -10px;margin-left:50px; border-radius:20px; box-shadow: 0px 5px 20px 10px #888888;">
+        <div style="height:40px">
+          <h3 style="margin:20px">Edit Popup</h3>
+        </div>
+        <div style="height:400px; background:lightgray">
+          <!-- <p style="padding:20px"><span style="color:red">Libraries /</span> Collection 1</p> -->
+        </div>
+        <div>
+          <button
+            style="border-radius:26px; background:#E20C9A; padding:10px; margin-left:350px;margin-top:10px; border:none; color:white; width:100px; cursor:pointer"
+            class="trim-cross">Save
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Popup Attach Video Modal Here -->
+    <div id="popUp-Attach-Video" class="trim-modal">
+      <div
+        style="background:white;width:500px; height:570px;overflow: auto; margin-top: -10px;margin-left:50px; border-radius:20px; box-shadow: 0px 5px 20px 10px #888888;">
+        <div style="height:40px">
+          <h3 style="margin:20px">Attach Video Popup</h3>
+        </div>
+        <div style="height:400px; background:lightgray">
+          <p style="padding:20px"><span style="color:red">Libraries /</span> Collection 1</p>
+
+          <div style="display:flex; margin-left:5px; margin-top:-12px">
+            <div style="background:white; width:147px;height:150px; border-radius:15px; margin-left:12px">
+              <img style="width:131px; height:110px; padding:8px" src="./media/myVidLibrary/myVid1.png" alt="">
+              <div style="position:relative; text-align:left; top:-12px;left:10px">
+                <h3 style="font-family:Poppins; font-style:normal; font-weight:600; font-size:10px; line-height:1px">
+                  Video_MPGW2346</h3>
+                <small
+                  style="position:relative; font-family:Poppins; font-style:normal; font-weight:500; font-size:7px; top:-7px">12/23/2021</small>
+              </div>
+            </div>
+            <div style="background:white; width:147px;height:150px; border-radius:15px; margin-left:12px">
+              <img style="width:131px; height:110px; padding:8px" src="./media/myVidLibrary/myVid2.png" alt="">
+              <div style="position:relative; text-align:left; top:-12px;left:10px">
+                <h3 style="font-family:Poppins; font-style:normal; font-weight:600; font-size:10px; line-height:1px">
+                  Video_MPGW2346</h3>
+                <small
+                  style="position:relative; font-family:Poppins; font-style:normal; font-weight:500; font-size:7px; top:-7px">12/23/2021</small>
+              </div>
+            </div>
+            <div style="background:white; width:147px;height:150px; border-radius:15px; margin-left:12px">
+              <img style="width:131px; height:110px; padding:8px" src="./media/myVidLibrary/myVid3.png" alt="">
+              <div style="position:relative; text-align:left; top:-12px;left:10px">
+                <h3 style="font-family:Poppins; font-style:normal; font-weight:600; font-size:10px; line-height:1px">
+                  Video_MPGW2346</h3>
+                <small
+                  style="position:relative; font-family:Poppins; font-style:normal; font-weight:500; font-size:7px; top:-7px">12/23/2021</small>
+              </div>
+            </div>
+          </div>
+
+          <div style="display:flex; margin-left:5px; margin-top:15px">
+            <div style="background:white; width:147px;height:150px; border-radius:15px; margin-left:12px">
+              <img style="width:131px; height:110px; padding:8px" src="./media/myVidLibrary/myVid4.png" alt="">
+              <div style="position:relative; text-align:left; top:-12px;left:10px">
+                <h3 style="font-family:Poppins; font-style:normal; font-weight:600; font-size:10px; line-height:1px">
+                  Video_MPGW2346</h3>
+                <small
+                  style="position:relative; font-family:Poppins; font-style:normal; font-weight:500; font-size:7px; top:-7px">12/23/2021</small>
+              </div>
+            </div>
+            <div style="background:white; width:147px;height:150px; border-radius:15px; margin-left:12px">
+              <img style="width:131px; height:110px; padding:8px" src="./media/myVidLibrary/myVid5.png" alt="">
+              <div style="position:relative; text-align:left; top:-12px;left:10px">
+                <h3 style="font-family:Poppins; font-style:normal; font-weight:600; font-size:10px; line-height:1px">
+                  Video_MPGW2346</h3>
+                <small
+                  style="position:relative; font-family:Poppins; font-style:normal; font-weight:500; font-size:7px; top:-7px">12/23/2021</small>
+              </div>
+            </div>
+            <div style="background:white; width:147px;height:150px; border-radius:15px; margin-left:12px">
+              <img style="width:131px; height:110px; padding:8px" src="./media/myVidLibrary/myVid6.png" alt="">
+              <div style="position:relative; text-align:left; top:-12px;left:10px">
+                <h3 style="font-family:Poppins; font-style:normal; font-weight:600; font-size:10px; line-height:1px">
+                  Video_MPGW2346</h3>
+                <small
+                  style="position:relative; font-family:Poppins; font-style:normal; font-weight:500; font-size:7px; top:-7px">12/23/2021</small>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <button
+            style="border-radius:26px; background:#E20C9A; padding:10px; margin-left:350px;margin-top:10px; border:none; color:white; width:100px; cursor:pointer"
+            class="trim-cross">Save
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Trim Modal Here -->
+    <div id="trimModal" class="trim-modal">
+      <div
+        style="background:white;width:500px; height:570px;overflow: auto; margin-top: -10px;margin-left:50px; border-radius:20px; box-shadow: 0px 5px 20px 10px #888888;">
+        <div style="height:40px">
+          <h3 style="margin:20px">Insert Video</h3>
+        </div>
+        <div style="height:400px; background:lightgray">
+          <p style="padding:20px"><span style="color:red">Libraries /</span> Collection 1</p>
+        </div>
+        <div>
+          <button
+            style="border-radius:26px; background:rgb(144, 8, 8); padding:10px; margin-left:350px;margin-top:10px; border:none; color:white; width:100px; cursor:pointer"
+            class="trim-cross">Insert
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Attach Video Modal Here (PopUp Old) -->
+    <div id="attachModal" class="attach-video-modal">
+      <div
+        style="background:white;width:500px; height:570px;overflow: auto; margin-top: -10px;margin-left:50px; border-radius:20px; box-shadow: 0px 5px 20px 10px #888888;">
+        <div style="height:40px">
+          <h3 style="margin:20px">Insert Video Attach Video</h3>
+        </div>
+        <div style="height:400px; background:lightgray">
+          <p style="padding:20px"><span style="color:red">Libraries /</span> Collection 1</p>
+
+          <div style="display:flex; margin-left:5px; margin-top:-12px">
+            <div style="background:white; width:147px;height:150px; border-radius:15px; margin-left:12px">
+              <img style="width:131px; height:110px; padding:8px" src="./media/myVidLibrary/myVid1.png" alt="">
+              <div style="position:relative; text-align:left; top:-12px;left:10px">
+                <h3 style="font-family:Poppins; font-style:normal; font-weight:600; font-size:10px; line-height:1px">
+                  Video_MPGW2346</h3>
+                <small
+                  style="position:relative; font-family:Poppins; font-style:normal; font-weight:500; font-size:7px; top:-7px">12/23/2021</small>
+              </div>
+            </div>
+            <div style="background:white; width:147px;height:150px; border-radius:15px; margin-left:12px">
+              <img style="width:131px; height:110px; padding:8px" src="./media/myVidLibrary/myVid2.png" alt="">
+              <div style="position:relative; text-align:left; top:-12px;left:10px">
+                <h3 style="font-family:Poppins; font-style:normal; font-weight:600; font-size:10px; line-height:1px">
+                  Video_MPGW2346</h3>
+                <small
+                  style="position:relative; font-family:Poppins; font-style:normal; font-weight:500; font-size:7px; top:-7px">12/23/2021</small>
+              </div>
+            </div>
+            <div style="background:white; width:147px;height:150px; border-radius:15px; margin-left:12px">
+              <img style="width:131px; height:110px; padding:8px" src="./media/myVidLibrary/myVid3.png" alt="">
+              <div style="position:relative; text-align:left; top:-12px;left:10px">
+                <h3 style="font-family:Poppins; font-style:normal; font-weight:600; font-size:10px; line-height:1px">
+                  Video_MPGW2346</h3>
+                <small
+                  style="position:relative; font-family:Poppins; font-style:normal; font-weight:500; font-size:7px; top:-7px">12/23/2021</small>
+              </div>
+            </div>
+          </div>
+
+          <div style="display:flex; margin-left:5px; margin-top:15px">
+            <div style="background:white; width:147px;height:150px; border-radius:15px; margin-left:12px">
+              <img style="width:131px; height:110px; padding:8px" src="./media/myVidLibrary/myVid4.png" alt="">
+              <div style="position:relative; text-align:left; top:-12px;left:10px">
+                <h3 style="font-family:Poppins; font-style:normal; font-weight:600; font-size:10px; line-height:1px">
+                  Video_MPGW2346</h3>
+                <small
+                  style="position:relative; font-family:Poppins; font-style:normal; font-weight:500; font-size:7px; top:-7px">12/23/2021</small>
+              </div>
+            </div>
+            <div style="background:white; width:147px;height:150px; border-radius:15px; margin-left:12px">
+              <img style="width:131px; height:110px; padding:8px" src="./media/myVidLibrary/myVid5.png" alt="">
+              <div style="position:relative; text-align:left; top:-12px;left:10px">
+                <h3 style="font-family:Poppins; font-style:normal; font-weight:600; font-size:10px; line-height:1px">
+                  Video_MPGW2346</h3>
+                <small
+                  style="position:relative; font-family:Poppins; font-style:normal; font-weight:500; font-size:7px; top:-7px">12/23/2021</small>
+              </div>
+            </div>
+            <div style="background:white; width:147px;height:150px; border-radius:15px; margin-left:12px">
+              <img style="width:131px; height:110px; padding:8px" src="./media/myVidLibrary/myVid6.png" alt="">
+              <div style="position:relative; text-align:left; top:-12px;left:10px">
+                <h3 style="font-family:Poppins; font-style:normal; font-weight:600; font-size:10px; line-height:1px">
+                  Video_MPGW2346</h3>
+                <small
+                  style="position:relative; font-family:Poppins; font-style:normal; font-weight:500; font-size:7px; top:-7px">12/23/2021</small>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <button
+              style="border-radius:26px; background:rgb(144, 8, 8); padding:10px; margin-left:350px;margin-top:40px; border:none; color:white; width:100px; cursor:pointer"
+              class="trim-cross">Insert
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal Finish Touches/Edit (After click change button(sept edition))-->
+    <div style="display:none" class="modal-content finishing-touches-edit">
+      <div class="">
+        <div class="camera-permission">
+          <h1 style="font-family:Poppins; font-style:normal; font-weight:900; font-size:32px">Finish Touches / Edit</h1>
+          <!-- <div style="display:flex;margin-top:50px">
+              </div> -->
+          <div style="width:892px; height:473px; background-color:rgba(247, 247, 247, 0.72)">
+            <video style="position:relative" width="300" height="300">
+              <source src="media/movie.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+
+            <div style="display:flex; left:290px; position:relative">
+              <div
+                onclick="showHide(id={hide:'finishing-touches-edit',show:'finishing-touches-video-dropdown-1st-btn'})"
+                style="width:92px; height:69px; border:1px solid lightgray; border-radius:15px;margin-left:5px; display:flex;; cursor:pointer">
+                <i style="margin-left:30px;margin-top:20px;font-size:30px" class="fas fa-plus"></i>
+              </div>
+
+              <div class="hoverTest"
+                style="width:92px; height:69px; border:1px solid lightgray; border-radius:15px;margin-left:5px">
+                <img style="width:100%" src="./media/person1.png" alt="">
+                <h5>Edit</h5>
+                <h5 onclick="showHide(id={hide:'finishing-touches-edit',show:'first-section'})">Delete</h5>
+              </div>
+
+              <div
+                onclick="showHide(id={hide:'finishing-touches-edit',show:'finishing-touches-video-dropdown-2nd-btn'})"
+                style="width:92px; height:69px; border:1px solid lightgray; border-radius:15px;margin-left:5px; display:flex; cursor:pointer">
+                <i style="margin-left:30px;margin-top:20px; font-size:30px" class="fas fa-plus"></i>
+
+              </div>
+            </div>
+
+          </div>
+
+          <div style="display:flex; top:-30px; margin-left:40px; position:relative">
+            <div style="">
+              <button style="border-radius:26px; height:45px; width:150px; color:black; background-color:#f2e9e9"
+                class="start-btn" onclick="showHide(id={hide:'finishing-touches-edit',show:'finishing-touches'})"><span
+                  style="font-family:Poppins; font-weight:800; font-size:14px">Back</span></button>
+            </div>
+            <div style="display:flex; margin-left:171px">
+              <button onclick="showHide(id={hide:'finishing-touches-edit',show:'finishing-touches'})"
+                style="background:#f2e9e9; border-radius:35px; padding:12px 24px; border:none; width:99px;height:45px; cursor:pointer"><span
+                  style="font-family:Poppins; font-weight:700; font-size:14px">Cancel</span></button>
+              <button onclick="showHide(id={hide:'finishing-touches-edit',show:'finishing-touches'})"
+                style="background: radial-gradient(85.34% 99% at 4.68% 109%, #FF6363 0%, #E20C9A 100%); border-radius:35px; padding:12px 24px; border:none; margin-left:20px; color:white;width:111px;height:45px; cursor:pointer"><span
+                  style="font-family:Poppins; font-weight:700; font-size:14px">Save</span></button>
+            </div>
+          </div>
+
+          <div style="position:relative;top:-225px">
+            <div style="margin-top:-390px;margin-left:4px" class="setting">
+              <i class="fas fa-cog"></i>
+            </div>
+            <div style="margin-top: -415px; margin-left: 879px" class="cross">
+              <i class="fas fa-times"></i>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal Finishing Touches video dropdown (after 1st button click) -->
+    <div style="display:none" class="modal-content finishing-touches-video-dropdown-1st-btn">
+      <div class="">
+        <div class="camera-permission">
+          <h1 style="font-family:Poppins; font-style:normal; font-weight:900; font-size:32px">Finish Touches / Edit</h1>
+          <div style="width:892px; height:473px; background-color:rgba(247, 247, 247, 0.72)">
+
+            <video style="position:relative" width="300" height="300">
+              <source src="media/movie.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+
+            <div style="display:flex; left:290px; position:relative">
+              <div
+                onclick="showHide(id={hide:'modal-content finishing-touches-video-dropdown-1st-btn',show:'modal-content finishing-touches'})"
+                style="width:92px; height:69px; border:1px solid lightgray; border-radius:15px;margin-left:5px; display:flex;; cursor:pointer">
+                <i style="margin-left:30px;margin-top:20px;font-size:30px" class="fas fa-plus"></i>
+              </div>
+
+              <div class="hoverTest"
+                style="width:92px; height:69px; border:1px solid lightgray; border-radius:15px;margin-left:5px">
+                <img style="width:100%" src="./media/person1.png" alt="">
+                <h5>Edit</h5>
+                <h5 onclick="showHide(id={hide:'finishing-touches-video-dropdown-1st-btn',show:'first-section'})">Delete
+                </h5>
+              </div>
+
+              <div
+                style="color:gray; width:92px; height:69px; border:1px solid lightgray; border-radius:15px;margin-left:5px; display:flex; cursor:pointer">
+                <i style="margin-left:30px;margin-top:20px; font-size:30px" class="fas fa-plus"></i>
+              </div>
+            </div>
+
+            <div
+              style="width:70px;height:65px; background-color:white; position:relative; text-align:left; left:330px;top:-30px; border-radius:15px">
+              <small style="margin-left:20px; cursor:pointer"
+                onclick="showHide(id={hide:'finishing-touches-video-dropdown-1st-btn',show:'finishing-touches-edit-text'})">Text</small>
+              <br>
+              <small style="margin-left:20px; cursor:pointer"
+                onclick="showHide(id={hide:'finishing-touches-video-dropdown-1st-btn',show:'finishing-touches-after-image-add'})">Image</small>
+              <br>
+              <small style="margin-left:20px; cursor:pointer"
+                onclick="showHide(id={hide:'finishing-touches-video-dropdown-1st-btn',show:'finishing-touches-after-video-add'})">Video</small>
+            </div>
+          </div>
+
+          <!-- <div style="display:flex; top:-30px; margin-left:40px; position:relative">
+                <div style="left:10px; position:relative">
+                  <i style="left:40px;top:0px; position:relative" class="fas fa-circle"></i>                    
+                  <button style="border-radius:25px; height:50px; width:160px; color:black; background-color:rgb(245, 215, 215)" class="start-btn" onclick="showHide(id={hide:'finishing-touches-video-dropdown-1st-btn',show:'first-section'})"><span style="position:relative; left:10px">Record New</span></button>
+                </div>
+                
+                <div style="display:flex; position:relative; left:200px; top:15px">
+                  <i style="padding:5px" class="fas fa-circle"></i>
+                  <i style="padding:5px" class="far fa-circle"></i>
+                </div>    
+                <button style="position:relative; border-radius:25px; height:50px; left:450px; background-color: rgb(250, 75, 75)" class="start-btn" onclick="showHide(id={hide:'finishing-touches-video-dropdown-1st-btn',show:'insert-style'})">Next</button>
+              </div> -->
+          <div style="display:flex; top:-30px; margin-left:40px; position:relative">
+            <div style="">
+              <button style="border-radius:26px; height:45px; width:150px; color:black; background-color:#f2e9e9"
+                class="start-btn"
+                onclick="showHide(id={hide:'finishing-touches-video-dropdown-1st-btn',show:'finishing-touches'})"><span
+                  style="font-family:Poppins; font-weight:800; font-size:14px">Back</span></button>
+            </div>
+            <div style="display:flex; margin-left:171px">
+              <button onclick="showHide(id={hide:'finishing-touches-video-dropdown-1st-btn',show:'finishing-touches'})"
+                style="background:#f2e9e9; border-radius:35px; padding:12px 24px; border:none; width:99px;height:45px; cursor:pointer"><span
+                  style="font-family:Poppins; font-weight:700; font-size:14px">Cancel</span></button>
+              <button onclick="showHide(id={hide:'finishing-touches-video-dropdown-1st-btn',show:'finishing-touches'})"
+                style="background: radial-gradient(85.34% 99% at 4.68% 109%, #FF6363 0%, #E20C9A 100%); border-radius:35px; padding:12px 24px; border:none; margin-left:20px; color:white;width:111px;height:45px; cursor:pointer"><span
+                  style="font-family:Poppins; font-weight:700; font-size:14px">Save</span></button>
+            </div>
+          </div>
+
+
+          <div style="position:relative;top:-225px">
+            <div style="margin-top:-390px;margin-left:4px" class="setting">
+              <i class="fas fa-cog"></i>
+            </div>
+            <div style="margin-top: -415px; margin-left: 879px" class="cross">
+              <i class="fas fa-times"></i>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal Finishing Touches video dropdown (after 2nd button click) -->
+    <div style="display:none" class="modal-content finishing-touches-video-dropdown-2nd-btn">
+      <div class="">
+        <div class="camera-permission">
+          <h1 style="font-family:Poppins; font-style:normal; font-weight:900; font-size:32px">Finish Touches / Edit</h1>
+
+          <div style="width:892px; height:473px; background-color:rgba(247, 247, 247, 0.72)">
+            <video style="position:relative" width="300" height="300">
+              <source src="media/movie.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+
+            <div style="display:flex; left:290px; position:relative">
+              <div
+                style="color:gray; width:92px; height:69px; border:1px solid lightgray; border-radius:15px;margin-left:5px; display:flex; cursor:pointer">
+                <i style="margin-left:30px;margin-top:20px;font-size:30px" class="fas fa-plus"></i>
+              </div>
+
+              <div class="hoverTest"
+                style="width:92px; height:69px; border:1px solid lightgray; border-radius:15px;margin-left:5px">
+                <img style="width:100%" src="./media/person1.png" alt="">
+                <h5>Edit</h5>
+                <h5 onclick="showHide(id={hide:'finishing-touches-video-dropdown-2nd-btn',show:'first-section'})">Delete
+                </h5>
+              </div>
+
+              <div onclick="showHide(id={hide:'finishing-touches-video-dropdown-2nd-btn',show:'finishing-touches'})"
+                style="width:92px; height:69px; border:1px solid lightgray; border-radius:15px;margin-left:5px; display:flex; cursor:pointer">
+                <i style="margin-left:30px;margin-top:20px; font-size:30px" class="fas fa-plus"></i>
+              </div>
+            </div>
+
+            <div
+              style="width:70px;height:65px; background-color:white; position:relative; text-align:left; left:530px;top:-30px; border-radius:15px">
+              <small style="margin-left:20px; cursor:pointer"
+                onclick="showHide(id={hide:'finishing-touches-video-dropdown-2nd-btn',show:'finishing-touches-edit-text'})">Text</small>
+              <br>
+              <small style="margin-left:20px; cursor:pointer"
+                onclick="showHide(id={hide:'finishing-touches-video-dropdown-2nd-btn',show:'finishing-touches-after-image-add'})">Image</small>
+              <br>
+              <small style="margin-left:20px; cursor:pointer"
+                onclick="showHide(id={hide:'finishing-touches-video-dropdown-2nd-btn',show:'finishing-touches-after-video-add'})">Video</small>
+            </div>
+          </div>
+
+          <!-- <div style="display:flex; top:-30px; margin-left:40px; position:relative">
+                <div style="left:10px; position:relative">
+                  <i style="left:40px;top:0px; position:relative" class="fas fa-circle"></i>                    
+                  <button style="border-radius:25px; height:50px; width:160px; color:black; background-color:rgb(245, 215, 215)" class="start-btn" onclick="showHide(id={hide:'finishing-touches',show:'first-section'})"><span style="position:relative; left:10px">Record New</span></button>
+                </div>
+                <div style="display:flex; position:relative; left:200px; top:15px">
+                  <i style="padding:5px" class="fas fa-circle"></i>
+                  <i style="padding:5px" class="far fa-circle"></i>
+                </div>    
+                <button style="position:relative; border-radius:25px; height:50px; left:450px; background-color: rgb(250, 75, 75)" class="start-btn" onclick="showHide(id={hide:'finishing-touches',show:'insert-style'})">Next</button>
+              </div> -->
+          <div style="display:flex; top:-30px; margin-left:40px; position:relative">
+            <div style="">
+              <button style="border-radius:26px; height:45px; width:150px; color:black; background-color:#f2e9e9"
+                class="start-btn"
+                onclick="showHide(id={hide:'finishing-touches-video-dropdown-2nd-btn',show:'finishing-touches'})"><span
+                  style="font-family:Poppins; font-weight:800; font-size:14px">Back</span></button>
+            </div>
+            <div style="display:flex; margin-left:171px">
+              <button onclick="showHide(id={hide:'finishing-touches-video-dropdown-2nd-btn',show:'finishing-touches'})"
+                style="background:#f2e9e9; border-radius:35px; padding:12px 24px; border:none; width:99px;height:45px; cursor:pointer"><span
+                  style="font-family:Poppins; font-weight:700; font-size:14px">Cancel</span></button>
+              <button onclick="showHide(id={hide:'finishing-touches-video-dropdown-2nd-btn',show:'finishing-touches'})"
+                style="background: radial-gradient(85.34% 99% at 4.68% 109%, #FF6363 0%, #E20C9A 100%); border-radius:35px; padding:12px 24px; border:none; margin-left:20px; color:white;width:111px;height:45px; cursor:pointer"><span
+                  style="font-family:Poppins; font-weight:700; font-size:14px">Save</span></button>
+            </div>
+          </div>
+
+
+          <div style="position:relative;top:-225px">
+            <div style="margin-top:-390px;margin-left:4px" class="setting">
+              <i class="fas fa-cog"></i>
+            </div>
+            <div style="margin-top: -415px; margin-left: 879px" class="cross">
+              <i class="fas fa-times"></i>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal Finishing Touches Text Edit -->
+    <div style="display:none" class="modal-content finishing-touches-edit-text">
+      <div class="">
+        <div class="camera-permission">
+          <h1 style="font-family:Poppins; font-style:normal; font-weight:900; font-size:32px">Edit Text Screen</h1>
+
+          <div style="width:892px;height:473px; background-color:rgba(247, 247, 247, 0.72)">
+            <div>
+              <div>
+                <img style="height:257px; width:343px" src="./media/branding-assets/edit-text-screen.png" alt="">
+                <p
+                  style="position:relative; font-family:Poppins; font-size:32px; font-weight:normal; top:-400px; color:white">
+                  Some Text</p>
+              </div>
+
+              <div style="display:flex; position:relative; left:274px; top:-250px">
+                <small>Duration</small>
+                <div style="margin-left:180px">
+                  <small>-</small>
+                  <small>3s</small>
+                  <small>+</small>
+                </div>
+              </div>
+
+              <div style="position:relative; left:300px; top:-240px">
+                <div style="display:flex; margin-left:-26px">
+                  <h5>Background</h5>
+                  <h5 style="margin-left:140px">#B724EB</h5>
+                </div>
+                <div style="position:relative; left:-145px; top:-60px">
+                  <img style="margin-left:-250px" src="./media/branding-assets/background-picker.png" alt="">
+                  <img style="position:relative; top:35px;left:-200px"
+                    src="./media/branding-assets/Ellipse-move-picker.png" alt="">
+                </div>
+              </div>
+
+              <div style="position:relative; left:300px; top:-300px">
+                <div style="display:flex; margin-left:-26px">
+                  <h5>Text Color</h5>
+                  <h5 style="margin-left:140px">#B724EB</h5>
+                </div>
+                <div style="position:relative; left:-145px; top:-60px">
+                  <img style="margin-left:-250px" src="./media/branding-assets/text-color-picker.png" alt="">
+                  <img style="position:relative; top:35px;left:-200px"
+                    src="./media/branding-assets/Ellipse-move-picker.png" alt="">
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div style="position:relative;top:-170px">
+            <div style="margin-top:-390px" class="setting">
+              <i class="fas fa-cog"></i>
+            </div>
+            <div style="margin-top: -415px; margin-left: 879px" class="cross">
+              <i class="fas fa-times"></i>
+            </div>
+          </div>
+
+          <button style="margin-top:15px; border-radius:25px;background:#f2e9e9;color:black" class="start-btn"
+            onclick="showHide(id={hide:'finishing-touches-edit-text',show:'finishing-touches'})">Cancel</button>
+          <button
+            style="margin-top:15px; border-radius:25px;background: radial-gradient(85.34% 99% at 4.68% 109%, #FF6363 0%, #E20C9A 100%)"
+            class="start-btn"
+            onclick="showHide(id={hide:'finishing-touches-edit-text',show:'finishing-touches-after-text-edit'})">Save</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal Finishing Touches After Text Edit (edited) -->
+    <div style="display:none" class="modal-content finishing-touches-after-text-edit">
+      <div class="">
+        <div class="camera-permission">
+          <!-- <h1>Finish Touches</h1> -->
+          <h1 style="font-family:Poppins; font-style:normal; font-weight:900; font-size:32px">Select Your TalkMail Type
+          </h1>
+
+          <div style="width:892px; height:473px; background-color:rgba(247, 247, 247, 0.72)">
+            <video style="position:relative" width="300" height="300">
+              <source src="media/movie.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+
+            <div style="display:flex; left:244px; position:relative">
+              <div
+                style="color:gray; width:92px; height:69px; border:1px solid lightgray; border-radius:15px;margin-left:5px; display:flex; cursor:pointer">
+                <i style="margin-left:30px;margin-top:20px;font-size:30px" class="fas fa-plus"></i>
+              </div>
+
+
+              <div class="hoverTest"
+                style="width:92px; height:69px; border:1px solid lightgray; border-radius:15px;margin-left:5px">
+                <img style="width:100%" src="./media/person1.png" alt="">
+                <h5>Edit</h5>
+                <h5 onclick="showHide(id={hide:'finishing-touches-after-text-edit',show:'first-section'})">Delete</h5>
+              </div>
+
+              <div class="hoverTest"
+                style="width:92px; height:69px; border:1px solid lightgray; border-radius:15px;margin-left:5px">
+                <img style="width:100%" src="./media/branding-assets/edit-text-screen.png" alt="">
+                <h5
+                  onclick="showHide(id={hide:'finishing-touches-after-text-edit',show:'finishing-touches-edit-text'})">
+                  Edit</h5>
+                <h5 onclick="showHide(id={hide:'finishing-touches-after-text-edit',show:'finishing-touches'})">Delete
+                </h5>
+              </div>
+
+              <div
+                style="color:gray; width:92px; height:69px; border:1px solid lightgray; border-radius:15px;margin-left:5px; display:flex; cursor:pointer">
+                <i style="margin-left:30px;margin-top:20px;font-size:30px" class="fas fa-plus"></i>
+              </div>
+            </div>
+          </div>
+
+
+          <!-- <div style="display:flex; top:-30px; margin-left:40px; position:relative">
+              <div style="left:10px; position:relative">
+                <i style="left:40px;top:0px; position:relative" class="fas fa-circle"></i>                    
+                <button style="border-radius:25px; height:50px; width:160px; color:black; background-color:rgb(245, 215, 215)" class="start-btn" onclick="showHide(id={hide:'finishing-touches-after-text-edit',show:'first-section'})"><span style="position:relative; left:10px">Record New</span></button>
+              </div>
+              <div style="display:flex; position:relative; left:200px; top:15px">
+                <i style="padding:5px" class="fas fa-circle"></i>
+                <i style="padding:5px" class="far fa-circle"></i>
+              </div>    
+              <button style="position:relative; border-radius:25px; height:50px; left:450px; background-color: rgb(250, 75, 75)" class="start-btn" onclick="showHide(id={hide:'finishing-touches-after-text-edit',show:'insert-style'})">Next</button>
+            </div> -->
+          <div style="display:flex; top:-30px; margin-left:40px; position:relative">
+            <div style="">
+              <button style="border-radius:26px; height:45px; width:150px; color:black; background-color:#f2e9e9"
+                class="start-btn"
+                onclick="showHide(id={hide:'finishing-touches-after-text-edit',show:'finishing-touches'})"><span
+                  style="font-family:Poppins; font-weight:800; font-size:14px">Back</span></button>
+            </div>
+            <div style="display:flex; margin-left:171px">
+              <button onclick="showHide(id={hide:'finishing-touches-after-text-edit',show:'finishing-touches'})"
+                style="background:#f2e9e9; border-radius:35px; padding:12px 24px; border:none; width:99px;height:45px; cursor:pointer"><span
+                  style="font-family:Poppins; font-weight:700; font-size:14px">Cancel</span></button>
+              <button onclick="showHide(id={hide:'finishing-touches-after-text-edit',show:'finishing-touches'})"
+                style="background: radial-gradient(85.34% 99% at 4.68% 109%, #FF6363 0%, #E20C9A 100%); border-radius:35px; padding:12px 24px; border:none; margin-left:20px; color:white;width:111px;height:45px; cursor:pointer"><span
+                  style="font-family:Poppins; font-weight:700; font-size:14px">Save</span></button>
+            </div>
+          </div>
+
+          <div style="position:relative;top:-225px">
+            <div style="margin-top:-390px;margin-left:4px" class="setting">
+              <i class="fas fa-cog"></i>
+            </div>
+            <div style="margin-top: -415px; margin-left: 879px" class="cross">
+              <i class="fas fa-times"></i>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal Finishing Touches After Image Add (Image added)-->
+    <div style="display:none" class="modal-content finishing-touches-after-image-add">
+      <div class="">
+        <div class="camera-permission">
+          <!-- <h1>Finish Touches (img added)</h1> -->
+          <h1 style="font-family:Poppins; font-style:normal; font-weight:900; font-size:32px">Finish Touches here...
+          </h1>
+
+          <div style="width:892px; height:473px; background-color:rgba(247, 247, 247, 0.72)">
+            <video style="position:relative" width="300" height="300">
+              <source src="media/movie.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+            <div style="display:flex; left:244px; position:relative">
+              <div
+                style="color:gray; width:92px; height:69px; border:1px solid lightgray; border-radius:15px;margin-left:5px; display:flex; cursor:pointer">
+                <i style="margin-left:30px;margin-top:20px;font-size:30px" class="fas fa-plus"></i>
+              </div>
+              <div class="hoverTest"
+                style="width:92px; height:69px; border:1px solid lightgray; border-radius:15px;margin-left:5px">
+                <img style="width:100%" src="./media/person1.png" alt="">
+                <h5>Edit</h5>
+                <h5 onclick="showHide(id={hide:'finishing-touches-after-image-add',show:'first-section'})">Delete</h5>
+              </div>
+
+              <div class="hoverTest"
+                style="width:92px; height:69px; border:1px solid lightgray; border-radius:15px;margin-left:5px">
+                <img style="width:100%" src="./media/after-image-add.png" alt="">
+                <h5>Edit</h5>
+                <h5 onclick="showHide(id={hide:'finishing-touches-after-image-add',show:'finishing-touches'})">Delete
+                </h5>
+              </div>
+              <div
+                style="color:gray; width:92px; height:69px; border:1px solid lightgray; border-radius:15px;margin-left:5px; display:flex; cursor:pointer">
+                <i style="margin-left:30px;margin-top:20px;font-size:30px" class="fas fa-plus"></i>
+              </div>
+            </div>
+          </div>
+
+          <!-- <div style="display:flex; top:-30px; margin-left:40px; position:relative">
+              <div style="left:10px; position:relative">
+                <i style="left:40px;top:0px; position:relative" class="fas fa-circle"></i>                    
+                <button style="border-radius:25px; height:50px; width:160px; color:black; background-color:rgb(245, 215, 215)" class="start-btn" onclick="showHide(id={hide:'finishing-touches-after-image-add',show:'first-section'})"><span style="position:relative; left:10px">Record New</span></button>
+              </div>
+              <div style="display:flex; position:relative; left:200px; top:15px">
+                <i style="padding:5px" class="fas fa-circle"></i>
+                <i style="padding:5px" class="far fa-circle"></i>
+              </div>    
+              <button style="position:relative; border-radius:25px; height:50px; left:450px; background-color: rgb(250, 75, 75)" class="start-btn" onclick="showHide(id={hide:'finishing-touches-after-image-add',show:'insert-style'})">Next</button>
+            </div> -->
+          <div style="display:flex; top:-30px; margin-left:40px; position:relative">
+            <div style="">
+              <button style="border-radius:26px; height:45px; width:150px; color:black; background-color:#f2e9e9"
+                class="start-btn"
+                onclick="showHide(id={hide:'finishing-touches-after-image-add',show:'finishing-touches'})"><span
+                  style="font-family:Poppins; font-weight:800; font-size:14px">Back</span></button>
+            </div>
+            <div style="display:flex; margin-left:171px">
+              <button onclick="showHide(id={hide:'finishing-touches-after-image-add',show:'finishing-touches'})"
+                style="background:#f2e9e9; border-radius:35px; padding:12px 24px; border:none; width:99px;height:45px; cursor:pointer"><span
+                  style="font-family:Poppins; font-weight:700; font-size:14px">Cancel</span></button>
+              <button onclick="showHide(id={hide:'finishing-touches-after-image-add',show:'finishing-touches'})"
+                style="background: radial-gradient(85.34% 99% at 4.68% 109%, #FF6363 0%, #E20C9A 100%); border-radius:35px; padding:12px 24px; border:none; margin-left:20px; color:white;width:111px;height:45px; cursor:pointer"><span
+                  style="font-family:Poppins; font-weight:700; font-size:14px">Save</span></button>
+            </div>
+          </div>
+
+          <div style="position:relative;top:-225px">
+            <div style="margin-top:-390px;margin-left:4px" class="setting">
+              <i class="fas fa-cog"></i>
+            </div>
+            <div style="margin-top: -415px; margin-left: 879px" class="cross">
+              <i class="fas fa-times"></i>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal Finishing Touches After Video Add (after click from dropdown)-->
+    <div style="display:none" class="modal-content finishing-touches-after-video-add">
+      <div class="">
+        <div class="camera-permission">
+          <!-- <h1>Video Library</h1> -->
+          <div>
+            <h1 style="font-family:Poppins; font-style:normal; font-weight:900; font-size:32px">Video Library</h1>
+            <button
+              style="position:relative; background:radial-gradient(85.34% 99% at 4.68% 109%, #FF6363 0%, #E20C9A 100%); border:none; border-radius:25px; left:304px;top:-65px; color:white; height:45px;width:87px"><span
+                style="position:relative">+Add</span></button>
+            <!-- <button style="position:relative; background:radial-gradient(85.34% 99% at 4.68% 109%, #FF6363 0%, #E20C9A 100%); border:none; border-radius:25px; left:350px;top:-60px; color:white; height:45px;width:87px"><span style="position:relative">+Add</span></button> -->
+          </div>
+
+          <div
+            style="background-color: rgba(247, 247, 247, 0.72); width: 892px; height:550px; border-radius:25px; margin-top:-15px">
+
+            <div
+              style="position:relative; left:40px;top:15px; background-color:white; width:812px;height:83px; border-radius:25px">
+              <div style="display:flex; margin-left:25px">
+                <img style="position:relative; width:48px;height:48px; top:15px" src="./media/myVideoLibrary.png"
+                  alt="">
+                <div style="position:relative; left:10px;top:-8px; text-align:left">
+                  <h4 style="font-family: Poppins; font-style:normal; font-weight:600; font-size:17px;">My Video Library
+                  </h4>
+                  <small
+                    style="position:relative; top:-22px; font-family: Poppins; font-style:normal; color:#878787; font-size:12px;">Videos
+                    15</small>
+                </div>
+              </div>
+              <div style="display:flex; position:relative; left:645px;top:-55px">
+                <small>Shared</small>
+                <span
+                  style="position:relative; left:59px; background-color:rgba(255, 211, 211, 0.37); width:30px;height:30px; border-radius:10px">
+                  <i style="padding:7px" class="fas fa-angle-right"></i>
+                </span>
+              </div>
+            </div>
+
+            <div
+              style="position:relative; left:40px;top:20px; background-color:rgba(247, 247, 247, 0.72); width:812px;height:83px; border-radius:25px">
+              <div style="display:flex; margin-left:25px">
+                <img style="position:relative; width:48px;height:48px; top:15px" src="./media/ford-video-library.png"
+                  alt="">
+                <div style="position:relative; left:10px;top:-8px; text-align:left">
+                  <h4 style="font-family: Poppins; font-style:normal; font-weight:600; font-size:17px;">Ford Video
+                    Library</h4>
+                  <small
+                    style="position:relative; top:-22px; font-family: Poppins; font-style:normal; color:#878787; font-size:12px;">Videos
+                    15</small>
+                </div>
+              </div>
+              <div style="display:flex; position:relative; left:645px;top:-55px">
+                <small>Shared</small>
+                <span
+                  style="position:relative; left:59px; background-color:rgba(255, 211, 211, 0.37); width:30px;height:30px; border-radius:10px">
+                  <i style="padding:7px" class="fas fa-angle-right"></i>
+                </span>
+              </div>
+            </div>
+
+            <div
+              onclick="showHide(id={hide:'finishing-touches-after-video-add',show:'finishing-touches-my-video-library'})"
+              style="position:relative; left:40px;top:25px; background-color:white; width:812px;height:83px; border-radius:25px; cursor:pointer; border:1px solid lightgray">
+              <div style="display:flex; margin-left:25px">
+                <img style="position:relative; width:48px;height:48px; top:15px" src="./media/Video1.png" alt="">
+                <div style="position:relative; left:10px;top:-8px; text-align:left">
+                  <h4 style="font-family: Poppins; font-style:normal; font-weight:600; font-size:17px;">Video 1</h4>
+                  <small
+                    style="position:relative; top:-22px; font-family: Poppins; font-style:normal; color:#878787; font-size:12px;">Videos
+                    15</small>
+                </div>
+              </div>
+              <div style="display:flex; position:relative; left:645px;top:-55px">
+                <small>Shared</small>
+                <span
+                  style="position:relative; left:59px; background:radial-gradient(85.34% 99% at 4.68% 109%, #FF6363 0%, #E20C9A 100%); width:30px;height:30px; border-radius:10px">
+                  <i style="padding:7px" class="fas fa-angle-right"></i>
+                </span>
+              </div>
+            </div>
+
+            <div
+              style="position:relative; left:40px;top:30px; background-color:rgba(247, 247, 247, 0.72); width:812px;height:83px; border-radius:25px">
+              <div style="display:flex; margin-left:25px">
+                <img style="position:relative; width:48px;height:48px; top:15px" src="./media/video2.png" alt="">
+                <div style="position:relative; left:10px;top:-8px; text-align:left">
+                  <h4 style="font-family: Poppins; font-style:normal; font-weight:600; font-size:17px;">Video 2</h4>
+                  <small
+                    style="position:relative; top:-22px; font-family: Poppins; font-style:normal; color:#878787; font-size:12px;">Videos
+                    15</small>
+                </div>
+              </div>
+              <div style="display:flex; position:relative; left:645px;top:-55px">
+                <small>Shared</small>
+                <span
+                  style="position:relative; left:59px; background-color:rgba(255, 211, 211, 0.37); width:30px;height:30px; border-radius:10px">
+                  <i style="padding:7px" class="fas fa-angle-right"></i>
+                </span>
+              </div>
+            </div>
+
+            <div
+              style="position:relative; left:40px;top:35px; background-color:white; width:812px;height:83px; border-radius:25px">
+              <div style="display:flex; margin-left:25px">
+                <img style="position:relative; width:48px;height:48px; top:15px" src="./media/video3.png" alt="">
+                <div style="position:relative; left:10px;top:-8px; text-align:left">
+                  <h4 style="font-family: Poppins; font-style:normal; font-weight:600; font-size:17px;">Video 3</h4>
+                  <small
+                    style="position:relative; top:-22px; font-family: Poppins; font-style:normal; color:#878787; font-size:12px;">Videos
+                    15</small>
+                </div>
+              </div>
+              <div style="display:flex; position:relative; left:645px;top:-55px">
+                <small>Shared</small>
+                <span
+                  style="position:relative; left:59px; background-color:rgba(255, 211, 211, 0.37); width:30px;height:30px; border-radius:10px">
+                  <i style="padding:7px" class="fas fa-angle-right"></i>
+                </span>
+              </div>
+            </div>
+
+            <div
+              style="position:relative; left:40px;top:40px; background-color:rgba(247, 247, 247, 0.72); width:812px;height:83px; border-radius:25px">
+              <div style="display:flex; margin-left:25px">
+                <img style="position:relative; width:48px;height:48px; top:15px" src="./media/video4.png" alt="">
+                <div style="position:relative; left:10px;top:-8px; text-align:left">
+                  <h4 style="font-family: Poppins; font-style:normal; font-weight:600; font-size:17px;">Video 4</h4>
+                  <small
+                    style="position:relative; top:-22px; font-family: Poppins; font-style:normal; color:#878787; font-size:12px;">Videos
+                    15</small>
+                </div>
+              </div>
+              <div style="display:flex; position:relative; left:645px;top:-55px">
+                <small>Shared</small>
+                <span
+                  style="position:relative; left:59px; background-color:rgba(255, 211, 211, 0.37); width:30px;height:30px; border-radius:10px">
+                  <i style="padding:7px" class="fas fa-angle-right"></i>
+                </span>
+              </div>
+            </div>
+
+            <!-- <div style="position:relative; left:45px;top:10px;margin:5px; background-color:pink; width:812px;height:83px; border-radius:25px">
+            <div style="display:flex; margin-left:25px">
+              <img style="position:relative; width:48px;height:48px; top:15px" src="./media/myVideoLibrary.png" alt="">
+              <div style="margin-left:10px; text-align:left">
+                <h4>My Video Library</h4>
+                <small style="position:relative; color:gray">Videos 15</small>
+              </div>
+            </div>
+            <div style="display:flex; position:relative; left:670px;top:-10px">
+              <small>Shared</small>
+              <i style="margin-left:10px" class="fas fa-angle-right"></i>
+            </div>
+          </div> -->
+
+
+            <!-- <div onclick="showHide(id={hide:'finishing-touches-after-video-add',show:'finishing-touches-my-video-library'})" style="background-color:white; width:800px; border-radius:25px">
+            <div style="display:flex">
+              <img style="width:50px;height:50px" src="./media/Video1.png" alt="">
+              <div style="margin-left:10px; text-align:left">
+                <h4>My Video Library</h4>
+                <small style="position:relative; color:gray">Videos 15</small>
+              </div>
+            </div>
+            <div style="display:flex; margin-left:470px">
+              <small>Shared</small>
+              <i style="margin-left:10px; background-color: rgb(243, 20, 50); color:white; padding:10px;height:15px; border-radius:10px" class="fas fa-angle-right"></i>
+            </div>
+          </div> -->
+          </div>
+
+          <div style="position:relative;top:-279px">
+            <div style="margin-top:-390px;margin-left:4px" class="setting">
+              <i class="fas fa-cog"></i>
+            </div>
+            <div style="margin-top: -415px; margin-left: 879px" class="cross">
+              <i class="fas fa-times"></i>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal Finishing Touches My Video Library -->
+    <div style="display:none" class="modal-content finishing-touches-my-video-library">
+      <div class="">
+        <div class="camera-permission">
+          <div style="height:98px">
+            <h1 style="font-family:Poppins; font-style:normal; font-weight:900; font-size:32px">My Video Library</h1>
+            <button
+              style="position:relative; background:radial-gradient(85.34% 99% at 4.68% 109%, #FF6363 0%, #E20C9A 100%); border:none; border-radius:25px; left:350px;top:-65px; color:white; height:45px;width:87px"><span
+                style="position:relative">+Add</span></button>
+            <button
+              onclick="showHide(id={hide:'finishing-touches-my-video-library',show:'finishing-touches-after-video-add'})"
+              style="position:relative; background:#F2E9E9; border:none; border-radius:25px; left:-400px;top:-65px; color:black; height:45px;width:87px; cursor:pointer"><span
+                style="left:-3px;position:relative"><i class="fas fa-angle-left"></i> Back</span></button>
+          </div>
+
+          <div
+            style="background-color: rgba(247, 247, 247, 0.72); width: 892px; height:589px; border-radius:25px; margin-top:-37px">
+            <div>
+              <div style="display:flex; position: relative; margin-left:20px">
+                <h5
+                  style="color:rgba(255, 0, 170, 0.787); font-family:Poppins; font-weight:600; font-size:14px; font-style:normal">
+                  Video library <span><i class="fas fa-angle-right"></i></span></h5>
+                <h5 style="margin-left:10px; font-family:Poppins; font-weight:500; font-size:14px; font-style:normal">My
+                  Video library <span><i class="fas fa-angle-right"></i></span></h5>
+              </div>
+
+              <div style="display:flex; margin-left:15px; margin-top:-12px">
+                <div style="background:white; width:254px;height:261px; border-radius:15px; margin-left:25px">
+                  <img style="width:222px; height:180px; padding:16px" src="./media/myVidLibrary/myVid1.png" alt="">
+                  <div style="position:relative; text-align:left;top:-15px;left:20px">
+                    <h3
+                      style="font-family:Poppins; font-style:normal; font-weight:600; font-size:16px; line-height:1px">
+                      Video_MPGW2346</h3>
+                    <small
+                      style="font-family:Poppins; font-style:normal; font-weight:500; font-size:12px">12/23/2021</small>
+                  </div>
+                </div>
+
+                <div style="background:white; width:254px;height:261px; border-radius:15px; margin-left:25px">
+                  <div
+                    onclick="showHide(id={hide:'finishing-touches-my-video-library',show:'finishing-touches-after-image-add'})"
+                    style="cursor:pointer">
+                    <img style="width:222px; height:180px; padding:16px" src="./media/myVidLibrary/myVid2.png" alt="">
+                    <i style="position:relative;top:-130px;color:white; font-size:30px" class="fas fa-play"></i>
+                  </div>
+                  <div style="position:relative; text-align:left;top:-45px;left:20px">
+                    <h3
+                      style="font-family:Poppins; font-style:normal; font-weight:600; font-size:16px; line-height:1px">
+                      Video_MPGW2346</h3>
+                    <small
+                      style="font-family:Poppins; font-style:normal; font-weight:500; font-size:12px">12/23/2021</small>
+                  </div>
+                </div>
+
+                <div style="background:white; width:254px;height:261px; border-radius:15px; margin-left:25px">
+                  <img style="width:222px; height:180px; padding:16px" src="./media/myVidLibrary/myVid3.png" alt="">
+                  <div style="position:relative; text-align:left;top:-15px;left:20px">
+                    <h3
+                      style="font-family:Poppins; font-style:normal; font-weight:600; font-size:16px; line-height:1px">
+                      Video_MPGW2346</h3>
+                    <small
+                      style="font-family:Poppins; font-style:normal; font-weight:500; font-size:12px">12/23/2021</small>
+                  </div>
+                </div>
+
+                <!-- <div style="margin-top:30px; padding:10px">
+                    <div onclick="showHide(id={hide:'finishing-touches-my-video-library',show:'finishing-touches-after-image-add'})" style="background-color:white; height:170px;width:170px; border-radius:25px">
+                      <i style="position:absolute;color:white; margin-top:60px;margin-left:70px; font-size:20px; cursor:pointer" class="fas fa-play"></i>
+                      <img style="width:90%; margin-top:10px; cursor:pointer" src="./media/myVidLibrary/myVid2.png" alt="">
+                      <h5 style="margin-top:0px;margin-left:-10px">Video_MPGW2346</h5>
+                      <small style="color:gray; margin-top:-20px;margin-left:-64px; position:absolute">12/23/2021</small>
+                    </div>
+                  </div>
+                  <div style="margin-top:30px; padding:10px">
+                    <div style="background-color:white; height:170px;width:170px; border-radius:25px">
+                      <img style="width:90%; margin-top:10px" src="./media/myVidLibrary/myVid3.png" alt="">
+                      <h5 style="margin-top:0px;margin-left:-10px">Video_MPGW2346</h5>
+                      <small style="color:gray; margin-top:-20px;margin-left:-64px; position:absolute">12/23/2021</small>
+                    </div>
+                  </div>  -->
+
+              </div>
+
+              <div style="display:flex; margin-left:15px;margin-top:10px">
+                <div style="background:white; width:254px;height:261px; border-radius:15px; margin-left:25px">
+                  <img style="width:222px; height:180px; padding:16px" src="./media/myVidLibrary/myVid4.png" alt="">
+                  <div style="position:relative; text-align:left;top:-15px;left:20px">
+                    <h3
+                      style="font-family:Poppins; font-style:normal; font-weight:600; font-size:16px; line-height:1px">
+                      Video_MPGW2346</h3>
+                    <small
+                      style="font-family:Poppins; font-style:normal; font-weight:500; font-size:12px">12/23/2021</small>
+                  </div>
+                </div>
+
+                <div style="background:white; width:254px;height:261px; border-radius:15px; margin-left:25px">
+                  <img style="width:222px; height:180px; padding:16px" src="./media/myVidLibrary/myVid5.png" alt="">
+                  <div style="position:relative; text-align:left;top:-15px;left:20px">
+                    <h3
+                      style="font-family:Poppins; font-style:normal; font-weight:600; font-size:16px; line-height:1px">
+                      Video_MPGW2346</h3>
+                    <small
+                      style="font-family:Poppins; font-style:normal; font-weight:500; font-size:12px">12/23/2021</small>
+                  </div>
+                </div>
+
+                <div style="background:white; width:254px;height:261px; border-radius:15px; margin-left:25px">
+                  <img style="width:222px; height:180px; padding:16px" src="./media/myVidLibrary/myVid6.png" alt="">
+                  <div style="position:relative; text-align:left;top:-15px;left:20px">
+                    <h3
+                      style="font-family:Poppins; font-style:normal; font-weight:600; font-size:16px; line-height:1px">
+                      Video_MPGW2346</h3>
+                    <small
+                      style="font-family:Poppins; font-style:normal; font-weight:500; font-size:12px">12/23/2021</small>
+                  </div>
+                </div>
+
+              </div>
+
+              <!-- <div style="margin-left:30px; margin-top:-10px; display:flex">
+                  <div style="margin-top:-0px; padding:10px">
+                    <div style="background-color:white; height:170px;width:170px; border-radius:25px">
+                      <img style="width:90%; margin-top:10px" src="./media/myVidLibrary/myVid4.png" alt="">
+                      <h5 style="margin-top:0px;margin-left:-10px">Video_MPGW2346</h5>
+                      <small style="color:gray; margin-top:-20px;margin-left:-64px; position:absolute">12/23/2021</small>
+                    </div>
+                  </div>
+                  <div style="margin-top:-0px; padding:10px">
+                    <div style="background-color:white; height:170px;width:170px; border-radius:25px">
+                      <img style="width:90%; margin-top:10px" src="./media/myVidLibrary/myVid5.png" alt="">
+                      <h5 style="margin-top:0px;margin-left:-10px">Video_MPGW2346</h5>
+                      <small style="color:gray; margin-top:-20px;margin-left:-64px; position:absolute">12/23/2021</small>
+                    </div>
+                  </div>
+                  <div style="margin-top:-0px; padding:10px">
+                    <div style="background-color:white; height:170px;width:170px; border-radius:25px">
+                      <img style="width:90%; margin-top:10px" src="./media/myVidLibrary/myVid6.png" alt="">
+                      <h5 style="margin-top:0px;margin-left:-10px">Video_MPGW2346</h5>
+                      <small style="color:gray; margin-top:-20px;margin-left:-64px; position:absolute">12/23/2021</small>
+                    </div>
+                  </div>  
+                </div> -->
+
+            </div>
+          </div>
+
+          <div style="position:relative;top:-279px">
+            <div style="margin-top:-390px;margin-left:4px" class="setting">
+              <i class="fas fa-cog"></i>
+            </div>
+            <div style="margin-top: -415px; margin-left: 879px" class="cross">
+              <i class="fas fa-times"></i>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal Edit Video -->
+    <div style="display:none" class="modal-content edit-video">
+      <div class="">
+        <div class="camera-permission">
+          <h1>Edit video</h1>
+          <small style="color: gray; margin-top: -20px; margin-left:-125px; position:absolute;">What makes TalkMail
+            look-like in your Email</small>
+          <div style="display:flex;margin-top:50px">
+          </div>
+          <video controls style="margin-top:-50px;margin-bottom:28px" width="300" height="300">
+            <source src="media/movie.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+
+          <div style="display:flex">
+            <!-- <button style="margin-top:15px;margin-left:10px; border-radius:25px; height:50px; width:160px; color:black;background-color:rgb(245, 215, 215)" class="start-btn" onclick="backToFinishingTouches()">Back</button> -->
+            <button
+              style="margin-top:15px;margin-left:10px; border-radius:25px; height:50px; width:160px; color:black;background-color:rgb(245, 215, 215)"
+              class="start-btn" onclick="showHide(id={hide:'edit-video',show:'finishing-touches'})">Back</button>
+            <h4 style="padding:10px">Edit Video</h4>
+            <h4 style="color:lightgray; padding:10px">Add Frames</h4>
+            <h4 style="color:lightgray; padding:10px">Insert Styles</h4>
+            <!-- <button style="margin-top:15px; border-radius:25px; height:50px; background-color: rgb(250, 75, 75)" class="start-btn" onclick="nextToAddFrames()">Next</button> -->
+            <button style="margin-top:15px; border-radius:25px; height:50px; background-color: rgb(250, 75, 75)"
+              class="start-btn" onclick="showHide(id={hide:'edit-video',show:'add-frames'})">Next</button>
+          </div>
+
+          <div style="margin-top: -496px; margin-left: 629px" class="cross">
+            <i class="fas fa-times"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal Add Frames -->
+    <div style="display:none" class="modal-content add-frames">
+      <div class="">
+        <div class="camera-permission">
+          <h1>Add frames</h1>
+          <small style="color: gray; margin-top: -20px; margin-left:-125px; position:absolute;">What makes TalkMail
+            look-like in your Email</small>
+          <div style="display:flex;margin-top:50px">
+          </div>
+          <video controls style="margin-top:-50px;margin-bottom:28px" width="300" height="300">
+            <source src="media/movie.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+
+          <div style="display:flex">
+            <!-- <button style="margin-top:15px;margin-left:10px; border-radius:25px; height:50px; width:160px; color:black;background-color:rgb(245, 215, 215)" class="start-btn" onclick="backToEdit()">Back</button> -->
+            <button
+              style="margin-top:15px;margin-left:10px; border-radius:25px; height:50px; width:160px; color:black;background-color:rgb(245, 215, 215)"
+              class="start-btn" onclick="showHide(id={hide:'add-frames',show:'edit-video'})">Back</button>
+            <h4 style="padding:10px">Edit Video</h4>
+            <h4 style="padding:10px">Add Frames</h4>
+            <h4 style="color:lightgray; padding:10px">Insert Styles</h4>
+            <!-- <button style="margin-top:15px; border-radius:25px; height:50px; background-color: rgb(250, 75, 75)" class="start-btn" onclick="toInsertStyle()">Next</button> -->
+            <button style="margin-top:15px; border-radius:25px; height:50px; background-color: rgb(250, 75, 75)"
+              class="start-btn" onclick="showHide(id={hide:'add-frames',show:'insert-style'})">Next</button>
+          </div>
+
+          <div style="margin-top: -496px; margin-left: 629px" class="cross">
+            <i class="fas fa-times"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal Insert Style (Last Section) -->
+    <div style="display:none" class="modal-content insert-style">
+      <div class="">
+        <div class="camera-permission" style="background:rgba(255, 192, 203, 0.198); overflow:hidden; border:none">
+
+          <div style="margin-top:87px; background:rgba(255, 192, 203, 0); width:892px; height:473px">
+            <div style="height:380px; background:white; margin:auto; width:40%; border-radius:25px; box-shadow: 0px 3px 15px 1px #888888">
+              <div class="container"
+                style="position:relative; top:20px; border:none; width:250px;height:182px; margin:auto; border-radius:15px; overflow:hidden; border:5px solid gray">
+                <div class="c-video">
+                  <video class="videoNew" src="media/movie.mp4"></video>
+                </div>
+                <div style="position: relative; top:-120px;left:10px">
+                  <i style="font-size:30px; color:white" class="fas fa-play"></i>
+                </div>
+              </div>
+
+              <div style="text-align: left; margin-top:60px; margin-left:60px">
+                <small
+                  style="position:relative;top:-20px; font-family:Poppins;font-style:normal;font-weight:500; font-size:12px;text-align:center">Lorem
+                  ipsum dolor sit amet, consectetur</small><br>
+                <small
+                  style="position:relative;top:-20px; font-family:Poppins;font-style:normal;font-weight:500; font-size:12px;text-align:center">Lorem
+                  ipsum dolor sit amet</small>
+              </div>
+
+              <div style="display:flex; margin-left:50px">
+                <div style="height:65px;width:65px; border:1px solid lightgray; border-radius:5px">
+                  <i style="font-size:37px; padding:15px" class="fas fa-user-md"></i>
+                </div>
+
+                <div style="margin-left:50px; margin-top:-20px">
+                  <h3 style="font-family:Poppins;font-style:normal;font-weight:600; font-size:18px;">Reply by TalkMail?
+                  </h3>
+                  <div style="display:flex">
+                    <button
+                      style="border:1px solid lightgray; border-radius:5px;padding:5px; width:45px; cursor:pointer">Yes</button>
+                    <button
+                      style="border:1px solid lightgray; border-radius:5px;padding:5px; width:45px; margin-left:10px; cursor:pointer">No</button>
+                  </div>
+                </div>
+              </div>
+
+
+            </div>
+
+            <!-- <div class="container" style="border:none; width:343px;height:282px; margin:auto; border-radius:15px; overflow:hidden">
+                <div class="c-video">
+                  <video class="videoNew" src="media/movie.mp4"></video>
+                </div>
+                <div style="position: relative; top:-165px;left:20px">
+                  <i style="font-size:30px; color:white" class="fas fa-play"></i>
+                </div>
+              </div> -->
+
+            <div style="position:relative;top:10px">
+              <div style="">
+                <small style="font-family:Poppins;font-size:12px;font-weight:800">Insert Style 3</small>
+                <button id="change-btn-last-sec"
+                  style="border:none; background-color:#F2E9E9;padding:10px; margin-left:150px; border-radius:25px;cursor:pointer">Change</button>
+              </div>
+              <!-- <div style="position: relative; top:10px;left:20px">
+                <small style="font-family:Poppins;font-size:12px;font-weight:800">Thumbnail:
+                  <strong>Automatic</strong></small>
+                <button style="border:none; background-color:#F2E9E9;padding:10px;border-radius:25px;cursor:pointer"
+                  onclick="showHide(id={hide:'insert-style',show:'finishing-touches-edit'})">Change</button>
+              </div> -->
+            </div>
+          </div>
+
+          <div style="display:flex;height:111px; position:relative;background:white">
+
+            <div style="display:flex;margin-left:40px">
+              <i style="font-size:30px; margin-left:50px; margin-top:15px; cursor:pointer" class="fas fa-arrow-left"
+                onclick="showHide(id={hide:'insert-style',show:'finishing-touches'})"></i>
+              <div style="display:flex; margin-left:156px">
+                <div style="display:flex">
+                  <i style="font-size:25px; padding:10px; color:#E20C9A; margin-top:5px"
+                    class="fas fa-check-circle"></i>
+                  <h4 style="color:black">Record</h4>
+                  <div style="position:relative; left:8px;top:8px">
+                    <hr style="width:50px; border:1px solid #707070; margin-top:20px">
+                  </div>
+                </div>
+                <div style="display:flex; margin-left:20px">
+                  <div style="margin-top:-4px">
+                    <!-- <h4
+                      style="background:#E20C9A; color:white; font-size:15px; border-radius:15px;padding:4px; width:17px">
+                      2</h4> -->
+                      <i style="font-size:25px; padding:10px; color:#E20C9A; margin-top:10px; margin-left:-10px"
+                    class="fas fa-check-circle"></i>
+                  </div>
+                  <h4 style="color:black">Edit</h4>
+                  <div style="position:relative; left:8px;top:8px">
+                    <hr style="width:50px; border:1px solid #707070; margin-top:20px">
+                  </div>
+                </div>
+                <div style="display:flex; margin-left:20px">
+                  <div style="margin-top:-4px">
+                    <h4
+                      style="background:#E20C9A; color:white; font-size:15px; border-radius:15px;padding:4px; width:17px">
+                      3</h4>
+                  </div>
+                  <h4 style="color:black; margin-left:10px">Insert</h4>
+                </div>
+              </div>
+            </div>
+
+            <button
+              style="border-radius:25px;width:156px;height:45px;margin-left:50px; background: radial-gradient(85.34% 99% at 4.68% 109%, #FF6363 0%, #E20C9A 100%); padding:12px 24px"
+              class="start-btn"><span style="font-family:Poppins;font-weight:800; font-size:14;color:white">Insert
+                TalkMail</span>
+            </button>
+          </div>
+        </div>
+
+        <div style="position:relative;top:-225px">
+          <div style="margin-top: -465px; margin-left: 879px" class="cross">
+            <i class="fas fa-times"></i>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Popup after Change button click from last section (no.3 popup) -->
+    <div id="popUp-modal-after-change-click" class="trim-modal">
+      <div
+        style="background:white;width:500px; height:570px;overflow: auto; margin-top: -10px;margin-left:50px; border-radius:20px; box-shadow: 0px 5px 20px 10px #888888;">
+        <div style="height:40px">
+          <h3 style="margin:20px">Attach Video Popup</h3>
+        </div>
+        <div style="height:400px; background:lightgray">
+          <p style="padding:20px"><span style="color:red">Libraries /</span> Collection 1</p>
+
+          <div style="display:flex; margin-left:5px; margin-top:-12px">
+            <div style="background:white; width:147px;height:150px; border-radius:15px; margin-left:12px">
+              <img style="width:131px; height:110px; padding:8px" src="./media/myVidLibrary/myVid1.png" alt="">
+              <div style="position:relative; text-align:left; top:-12px;left:10px">
+                <h3 style="font-family:Poppins; font-style:normal; font-weight:600; font-size:10px; line-height:1px">
+                  Video_MPGW2346</h3>
+                <small
+                  style="position:relative; font-family:Poppins; font-style:normal; font-weight:500; font-size:7px; top:-7px">12/23/2021</small>
+              </div>
+            </div>
+            <div style="background:white; width:147px;height:150px; border-radius:15px; margin-left:12px">
+              <img style="width:131px; height:110px; padding:8px" src="./media/myVidLibrary/myVid2.png" alt="">
+              <div style="position:relative; text-align:left; top:-12px;left:10px">
+                <h3 style="font-family:Poppins; font-style:normal; font-weight:600; font-size:10px; line-height:1px">
+                  Video_MPGW2346</h3>
+                <small
+                  style="position:relative; font-family:Poppins; font-style:normal; font-weight:500; font-size:7px; top:-7px">12/23/2021</small>
+              </div>
+            </div>
+            <div style="background:white; width:147px;height:150px; border-radius:15px; margin-left:12px">
+              <img style="width:131px; height:110px; padding:8px" src="./media/myVidLibrary/myVid3.png" alt="">
+              <div style="position:relative; text-align:left; top:-12px;left:10px">
+                <h3 style="font-family:Poppins; font-style:normal; font-weight:600; font-size:10px; line-height:1px">
+                  Video_MPGW2346</h3>
+                <small
+                  style="position:relative; font-family:Poppins; font-style:normal; font-weight:500; font-size:7px; top:-7px">12/23/2021</small>
+              </div>
+            </div>
+          </div>
+
+          <div style="display:flex; margin-left:5px; margin-top:15px">
+            <div style="background:white; width:147px;height:150px; border-radius:15px; margin-left:12px">
+              <img style="width:131px; height:110px; padding:8px" src="./media/myVidLibrary/myVid4.png" alt="">
+              <div style="position:relative; text-align:left; top:-12px;left:10px">
+                <h3 style="font-family:Poppins; font-style:normal; font-weight:600; font-size:10px; line-height:1px">
+                  Video_MPGW2346</h3>
+                <small
+                  style="position:relative; font-family:Poppins; font-style:normal; font-weight:500; font-size:7px; top:-7px">12/23/2021</small>
+              </div>
+            </div>
+            <div style="background:white; width:147px;height:150px; border-radius:15px; margin-left:12px">
+              <img style="width:131px; height:110px; padding:8px" src="./media/myVidLibrary/myVid5.png" alt="">
+              <div style="position:relative; text-align:left; top:-12px;left:10px">
+                <h3 style="font-family:Poppins; font-style:normal; font-weight:600; font-size:10px; line-height:1px">
+                  Video_MPGW2346</h3>
+                <small
+                  style="position:relative; font-family:Poppins; font-style:normal; font-weight:500; font-size:7px; top:-7px">12/23/2021</small>
+              </div>
+            </div>
+            <div style="background:white; width:147px;height:150px; border-radius:15px; margin-left:12px">
+              <img style="width:131px; height:110px; padding:8px" src="./media/myVidLibrary/myVid6.png" alt="">
+              <div style="position:relative; text-align:left; top:-12px;left:10px">
+                <h3 style="font-family:Poppins; font-style:normal; font-weight:600; font-size:10px; line-height:1px">
+                  Video_MPGW2346</h3>
+                <small
+                  style="position:relative; font-family:Poppins; font-style:normal; font-weight:500; font-size:7px; top:-7px">12/23/2021</small>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <button
+            style="border-radius:26px; background:#E20C9A; padding:10px; margin-left:350px;margin-top:10px; border:none; color:white; width:100px; cursor:pointer"
+            class="trim-cross">Save
+          </button>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- Modal After Change Button Click-->
+    <div style="display:none" class="modal-content after-change-button-click">
+      <div class="">
+        <div class="camera-permission">
+          <div>
+            <h1 style="font-family:Poppins; font-style:normal; font-weight:900; font-size:32px">Select Your TalkMail
+              Type</h1>
+            <small
+              style="position:relative; top:-20px; font-family:Poppins;font-style:normal;font-weight:500; font-size:12px;text-align:center">Self
+              video viewers record responses at anytime</small>
+          </div>
+          <!-- <h1>Insert Style</h1>
+            <small style="color: gray; margin-top: -20px; margin-left:-150px; position:absolute;">What makes TalkMail look-like in your Email</small> -->
+          <div style="width:892px; height:473px;background:rgba(247, 247, 247, 0.72)">
+            <div style="display:flex; margin-left:200px">
+              <!-- <h4>Branding Style</h4> -->
+              <h4 style="color:lightgray;margin-left:10px;cursor:pointer"
+                onclick="showHide(id={hide:'branding',show:'branding-assets'})"></h4>
+            </div>
+            <!-- <hr style="width:50px;margin-left:230px;margin-top:-10px;border:1px solid"> -->
+
+            <div style="position:relative; display:flex; top:50px;left:56px">
+
+              <div style="">
+                <div style="display:flex; position:relative">
+                  <!-- <h4><i style="background:radial-gradient(85.34% 99% at 4.68% 109%, #FF6363 0%, #E20C9A 100%)" class="fas fa-check-circle"></i> Only Image</h4> -->
+                  <h4><i
+                      style="background:radial-gradient(85.34% 99% at 4.68% 109%, #FF6363 0%, #E20C9A 100%); border-radius:25px;color:white; padding:8px;top:-4px;position:relative; font-size:8px"
+                      class="fas fa-check"></i> Only Image</h4>
+                </div>
+                <img style="border-radius:20px; border:3px solid #e20c9a" src="/media/customerCareGuy.png"
+                  alt="talk-mail type">
+              </div>
+
+              <div style="margin-left:20px; width:246px">
+                <div style="display:flex; position:relative; top:-6px">
+                  <h4><i style="position:relative;top:3px; color:gray; font-size:25px" class="far fa-circle"></i> Image
+                    with text</h4>
+                </div>
+                <img onclick="showHide(id={hide:'after-change-button-click',show:'after-change-button-click-2nd'})"
+                  style="border-radius:20px; cursor:pointer" src="/media/customerCareGuy.png" alt="talk-mail type">
+                <small style="font-family:Poppins; font-weight:600; font-size: 12px">Hello Hana just received your
+                  proposal and wanted to respond my ... <span style="color:pink">More</span></small>
+              </div>
+
+              <div style="margin-left:20px; width:246px">
+                <div style="display:flex; position:relative; top:-6px">
+                  <h4><i style="position:relative;top:3px; color:gray; font-size:25px" class="far fa-circle"></i> Image
+                    text and play icon</h4>
+                </div>
+                <img onclick="showHide(id={hide:'after-change-button-click',show:'after-change-button-click-3rd'})"
+                  style="border-radius:20px; cursor:pointer" src="/media/customerCareGuy.png" alt="talk-mail type">
+                <small style="font-family:Poppins; font-weight:600; font-size: 12px">Hello Hana just received your
+                  proposal and wanted to respond my ... <span style="color:pink">More</span></small>
+              </div>
+
+              <!-- <div style="margin-right:10px">
+                  <div style="display:flex; position:absolute; margin-top:-50px;margin-left:0px">
+                    <h4><i style="color:gray" class="far fa-circle"></i> Image with text</h4>
+                  </div>
+                  <img onclick="showHide(id={hide:'after-change-button-click',show:'after-change-button-click-2nd'})" style="width:100%;cursor:pointer" src="/media/parsonLarge.png" alt="talk-mail type">
+                  <small style="color:gray; position:absolute; width:170px; margin-left:-170px; margin-top:140px">Hello Hanna just received your proposal and ... <span style="color:rgb(255, 0, 106)">More</span></small>
+                </div>                
+                <div style="margin-right:40px">
+                  <div style="display:flex; position:absolute; margin-top:-50px;margin-left:0px">
+                    <h4><i style="color:gray" class="far fa-circle"></i> Image text & play icon</h4>
+                  </div>
+                  <img onclick="showHide(id={hide:'after-change-button-click',show:'after-change-button-click-3rd'})" style="width:100%;cursor:pointer" src="/media/parsonLarge.png" alt="talk-mail type">
+                  <small style="color:gray; position:absolute; width:170px; margin-left:-170px; margin-top:140px">Hello Hanna just received your proposal and ... <span style="color:rgb(255, 0, 106)">More</span></small>
+                </div> -->
+
+            </div>
+          </div>
+
+          <div style="position:relative;top:-181px">
+            <div style="margin-top:-390px" class="setting">
+              <i class="fas fa-cog"></i>
+            </div>
+            <div style="margin-top: -425px; margin-left: 890px" class="cross">
+              <i class="fas fa-times"></i>
+            </div>
+          </div>
+
+          <!-- <button style="margin-top:15px; border-radius:25px" class="start-btn" onclick="brandingCancelToFirstSection()">Cancel</button> -->
+          <button style="margin-top:15px; border-radius:25px" class="start-btn"
+            onclick="showHide(id={hide:'after-change-button-click',show:'insert-style'})">Cancel</button>
+          <!-- <button style="margin-top:15px; border-radius:25px" class="start-btn" onclick="brandingSaveToFirstSection()">Save</button> -->
+          <button style="margin-top:15px; border-radius:25px" class="start-btn"
+            onclick="showHide(id={hide:'after-change-button-click',show:'insert-style'})">Save</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal After Change Button Click 2nd-->
+    <div style="display:none" class="modal-content after-change-button-click-2nd">
+      <div class="">
+        <div class="camera-permission">
+          <div>
+            <h1 style="font-family:Poppins; font-style:normal; font-weight:900; font-size:32px">Select Your TalkMail
+              Type</h1>
+            <small
+              style="position:relative; top:-20px; font-family:Poppins;font-style:normal;font-weight:500; font-size:12px;text-align:center">Self
+              video viewers record responses at anytime</small>
+          </div>
+          <div style="width:892px; height:473px;background:rgba(247, 247, 247, 0.72)">
+            <div style="display:flex; margin-left:200px">
+              <h4 style="color:lightgray;margin-left:10px;cursor:pointer"
+                onclick="showHide(id={hide:'branding',show:'branding-assets'})"></h4>
+            </div>
+
+            <div style="position:relative; display:flex; top:50px;left:56px">
+
+              <div style="">
+                <div style="display:flex; position:relative; left:-1px;top:-7px">
+                  <h4><i style="position:relative;top:3px; color:gray; font-size:25px" class="far fa-circle"></i> Only
+                    Image</h4>
+                </div>
+                <img onclick="showHide(id={hide:'after-change-button-click-2nd',show:'after-change-button-click'})"
+                  style="border-radius:20px; cursor:pointer" src="/media/customerCareGuy.png" alt="talk-mail type">
+              </div>
+
+              <div style="margin-left:20px; width:246px">
+                <div style="display:flex; position:relative; top:1px;left:7px">
+                  <h4><i
+                      style="background:radial-gradient(85.34% 99% at 4.68% 109%, #FF6363 0%, #E20C9A 100%); border-radius:25px;color:white; padding:8px;top:-4px;position:relative; font-size:8px"
+                      class="fas fa-check"></i> Image with text</h4>
+                </div>
+                <img style="border-radius:20px; cursor:pointer; border:3px solid #e20c9a"
+                  src="/media/customerCareGuy.png" alt="talk-mail type">
+                <small style="font-family:Poppins; font-weight:600; font-size: 12px">Hello Hana just received your
+                  proposal and wanted to respond my ... <span style="color:pink">More</span></small>
+              </div>
+
+              <div style="margin-left:20px; width:246px">
+                <div style="display:flex; position:relative; left:6px; top:-6px">
+                  <h4><i style="position:relative;top:3px; color:gray; font-size:25px" class="far fa-circle"></i> Image
+                    text and play icon</h4>
+                </div>
+                <img onclick="showHide(id={hide:'after-change-button-click-2nd',show:'after-change-button-click-3rd'})"
+                  style="border-radius:20px; cursor:pointer" src="/media/customerCareGuy.png" alt="talk-mail type">
+                <small style="font-family:Poppins; font-weight:600; font-size: 12px">Hello Hana just received your
+                  proposal and wanted to respond my ... <span style="color:pink">More</span></small>
+              </div>
+
+            </div>
+          </div>
+
+          <div style="position:relative;top:-181px">
+            <div style="margin-top:-390px" class="setting">
+              <i class="fas fa-cog"></i>
+            </div>
+            <div style="margin-top: -425px; margin-left: 890px" class="cross">
+              <i class="fas fa-times"></i>
+            </div>
+          </div>
+
+          <button style="margin-top:15px; border-radius:25px" class="start-btn"
+            onclick="showHide(id={hide:'after-change-button-click-2nd',show:'insert-style'})">Cancel</button>
+          <button style="margin-top:15px; border-radius:25px" class="start-btn"
+            onclick="showHide(id={hide:'after-change-button-click-2nd',show:'insert-style'})">Save</button>
+          <!-- <h1>Insert Style</h1>
+            <small style="color: gray; margin-top: -20px; margin-left:-150px; position:absolute;">What makes TalkMail look-like in your Email</small>
+            <div style="height:310px;background-color:rgba(211, 211, 211, 0.164)">
+              <div style="display:flex; margin-left:200px">
+                <h4 style="color:lightgray;margin-left:10px;cursor:pointer" onclick="showHide(id={hide:'branding',show:'branding-assets'})"></h4>
+              </div>
+              <div style="display:flex;margin-top:50px">
+                <div style="margin-left:40px; margin-right:10px">
+                  <div style="display:flex; position:absolute; margin-top:-50px;margin-left:0px">
+                    <h4><i style="color:gray" class="far fa-circle"></i></i> Only Image</h4>
+                  </div>
+                    <img onclick="showHide(id={hide:'after-change-button-click-2nd',show:'after-change-button-click'})" style="width:100%;cursor:pointer" src="/media/parsonLarge.png" alt="talk-mail type">
+                  
+                </div>
+                
+                <div style="margin-right:10px">
+                  <div style="display:flex; position:absolute; margin-top:-50px;margin-left:0px">
+                    <h4><i style="color:red" class="fas fa-check-circle"></i></i> Image with text</h4>
+                  </div>
+                  <img style="width:100%;cursor:pointer;border:3px solid red; border-radius:25px" src="/media/parsonLarge.png" alt="talk-mail type">
+                  <small style="color:gray; position:absolute; width:170px; margin-left:-80px; margin-top:0px">Hello Hanna just received your proposal and ... <span style="color:rgb(255, 0, 106)">More</span></small>
+                </div>
+                
+                <div style="margin-right:40px">
+                  <div style="display:flex; position:absolute; margin-top:-50px;margin-left:0px">
+                    <h4><i style="color:gray" class="far fa-circle"></i> Image text & play icon</h4>
+                  </div>
+                  <img onclick="showHide(id={hide:'after-change-button-click-2nd',show:'after-change-button-click-3rd'})" style="width:100%;cursor:pointer" src="/media/parsonLarge.png" alt="talk-mail type">
+                  <small style="color:gray; position:absolute; width:170px; margin-left:-170px; margin-top:140px">Hello Hanna just received your proposal and ... <span style="color:rgb(255, 0, 106)">More</span></small>
+                </div>
+            </div>
+            </div>
+            
+            <div style="margin-top: -415px; margin-left: 629px" class="cross">
+              <i class="fas fa-times"></i>
+            </div>
+            <button style="margin-top:15px; border-radius:25px" class="start-btn" onclick="showHide(id={hide:'after-change-button-click-2nd',show:'insert-style'})">Cancel</button>
+            <button style="margin-top:15px; border-radius:25px" class="start-btn" onclick="showHide(id={hide:'after-change-button-click-2nd',show:'insert-style'})">Save</button> -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal After Change Button Click 3rd-->
+    <div style="display:none" class="modal-content after-change-button-click-3rd">
+      <div class="">
+        <div class="camera-permission">
+
+          <div>
+            <h1 style="font-family:Poppins; font-style:normal; font-weight:900; font-size:32px">Select Your TalkMail
+              Type</h1>
+            <small
+              style="position:relative; top:-20px; font-family:Poppins;font-style:normal;font-weight:500; font-size:12px;text-align:center">Self
+              video viewers record responses at anytime</small>
+          </div>
+          <div style="width:892px; height:473px;background:rgba(247, 247, 247, 0.72)">
+            <!-- <div style="display:flex; margin-left:200px">
+                <h4 style="color:lightgray;margin-left:10px;cursor:pointer" onclick="showHide(id={hide:'branding',show:'branding-assets'})"></h4>
+              </div> -->
+
+            <div style="position:relative; display:flex; top:93px;left:56px">
+
+              <div style="">
+                <div style="display:flex; position:relative; left:-1px; top:-7px">
+                  <h4><i style="position:relative;top:3px; color:gray; font-size:25px" class="far fa-circle"></i> Only
+                    Image</h4>
+                </div>
+                <img onclick="showHide(id={hide:'after-change-button-click-3rd',show:'after-change-button-click'})"
+                  style="border-radius:20px; cursor:pointer" src="/media/customerCareGuy.png" alt="talk-mail type">
+              </div>
+
+              <div style="margin-left:20px; width:246px">
+                <div style="display:flex; position:relative; left:6px; top:-6px">
+                  <!-- <h4><i style="background:radial-gradient(85.34% 99% at 4.68% 109%, #FF6363 0%, #E20C9A 100%); border-radius:25px;color:white; padding:8px;top:-4px;position:relative; font-size:8px" class="fas fa-check"></i> Image with text</h4> -->
+                  <h4><i style="position:relative;top:3px; color:gray; font-size:25px" class="far fa-circle"></i> Image
+                    with text</h4>
+                </div>
+                <img onclick="showHide(id={hide:'after-change-button-click-3rd',show:'after-change-button-click-2nd'})"
+                  style="border-radius:20px; cursor:pointer" src="/media/customerCareGuy.png" alt="talk-mail type">
+                <small style="font-family:Poppins; font-weight:600; font-size: 12px">Hello Hana just received your
+                  proposal and wanted to respond my ... <span style="color:pink">More</span></small>
+              </div>
+
+              <div style="margin-left:20px; width:246px">
+                <div style="display:flex; position:relative; left:7px; top:1px">
+                  <!-- <h4><i style="position:relative;top:3px; color:gray; font-size:25px" class="far fa-circle"></i> Image text and play icon</h4> -->
+                  <h4><i
+                      style="background:radial-gradient(85.34% 99% at 4.68% 109%, #FF6363 0%, #E20C9A 100%); border-radius:25px;color:white; padding:8px;top:-4px;position:relative; font-size:8px"
+                      class="fas fa-check"></i> Image text and play icon</h4>
+                </div>
+                <img style="border-radius:20px; border:3px solid #e20c9a" src="/media/customerCareGuy.png"
+                  alt="talk-mail type">
+                <small style="font-family:Poppins; font-weight:600; font-size: 12px">Hello Hana just received your
+                  proposal and wanted to respond my ... <span style="color:pink">More</span></small>
+              </div>
+
+            </div>
+          </div>
+
+          <div style="position:relative;top:-181px">
+            <div style="margin-top:-390px" class="setting">
+              <i class="fas fa-cog"></i>
+            </div>
+            <div style="margin-top: -425px; margin-left: 890px" class="cross">
+              <i class="fas fa-times"></i>
+            </div>
+          </div>
+
+          <button style="margin-top:15px; border-radius:25px" class="start-btn"
+            onclick="showHide(id={hide:'after-change-button-click-3rd',show:'insert-style'})">Cancel</button>
+          <button style="margin-top:15px; border-radius:25px" class="start-btn"
+            onclick="showHide(id={hide:'after-change-button-click-3rd',show:'insert-style'})">Save</button>
+
+
+          <!-- <h1>Insert Style</h1>
+            <small style="color: gray; margin-top: -20px; margin-left:-150px; position:absolute;">What makes TalkMail look-like in your Email</small>
+            <div style="height:310px;background-color:rgba(211, 211, 211, 0.164)">
+              <div style="display:flex; margin-left:200px">
+                <h4 style="color:lightgray;margin-left:10px;cursor:pointer" onclick="showHide(id={hide:'branding',show:'branding-assets'})"></h4>
+              </div>
+              <div style="display:flex;margin-top:50px">
+                <div style="margin-left:40px; margin-right:10px">
+                  <div style="display:flex; position:absolute; margin-top:-50px;margin-left:0px">
+                    <h4><i style="color:gray" class="far fa-circle"></i></i> Only Image</h4>
+                  </div>
+                    <img onclick="showHide(id={hide:'after-change-button-click-3rd',show:'after-change-button-click'})" style="width:100%;cursor:pointer" src="/media/parsonLarge.png" alt="talk-mail type">
+                  
+                </div>
+                
+                <div style="margin-right:10px">
+                  <div style="display:flex; position:absolute; margin-top:-50px;margin-left:0px">
+                    <h4><i style="color:gray" class="far fa-circle"></i></i> Image with text</h4>
+                  </div>
+                  <img onclick="showHide(id={hide:'after-change-button-click-3rd',show:'after-change-button-click-2nd'})" style="width:100%;cursor:pointer" src="/media/parsonLarge.png" alt="talk-mail type">
+                  <small style="color:gray; position:absolute; width:170px; margin-left:-170px; margin-top:140px">Hello Hanna just received your proposal and ... <span style="color:rgb(255, 0, 106)">More</span></small>
+                </div>
+                
+                <div style="margin-right:40px">
+                  <div style="display:flex; position:absolute; margin-top:-50px;margin-left:0px">
+                    <h4><i style="color:red" class="fas fa-check-circle"></i> Image text & play icon</h4>
+                  </div>
+                  <img style="width:100%;cursor:pointer;border:3px solid red; border-radius:25px" src="/media/parsonLarge.png" alt="talk-mail type">
+                  <small style="color:gray; position:absolute; width:170px; margin-left:-80px; margin-top:0px">Hello Hanna just received your proposal and ... <span style="color:rgb(255, 0, 106)">More</span></small>
+                </div>
+            </div>
+            </div>
+            
+            <div style="margin-top: -415px; margin-left: 629px" class="cross">
+              <i class="fas fa-times"></i>
+            </div>
+            <button style="margin-top:15px; border-radius:25px" class="start-btn" onclick="showHide(id={hide:'after-change-button-click-3rd',show:'insert-style'})">Cancel</button>
+            <button style="margin-top:15px; border-radius:25px" class="start-btn" onclick="showHide(id={hide:'after-change-button-click-3rd',show:'insert-style'})">Save</button> -->
+        </div>
+      </div>
+    </div>
+
+
+    <!-- Modal Insert Style Change -->
+    <div style="display:none" class="modal-content insert-style-change">
+      <div class="">
+        <div class="camera-permission">
+          <h1>Insert Style</h1>
+          <small style="color: gray; margin-top: -20px; margin-left:-150px; position:absolute;">What makes TalkMail
+            look-like in your Email</small>
+          <div style="display:flex;margin-top:50px">
+            <div style="margin-left:40px; margin-right:10px">
+              <img style="width:100%" src="/media/audio.png" alt="talk-mail type">
+            </div>
+
+            <div style="margin-right:10px">
+              <img style="width:100%" src="/media/video.png" alt="talk-mail type">
+            </div>
+
+            <div style="margin-right:40px">
+              <img style="width:100%" src="/media/screenshare.png" alt="talk-mail type">
+            </div>
+          </div>
+          <div style="margin-top: -476px; margin-left: 629px" class="cross">
+            <i class="fas fa-times"></i>
+          </div>
+          <!-- <button style="margin-top:15px; border-radius:25px" class="start-btn" onclick="cancelBackToInsertStyle()">Cancel</button> -->
+          <button style="margin-top:15px; border-radius:25px" class="start-btn"
+            onclick="showHide(id={hide:'insert-style-change',show:'insert-style'})">Cancel</button>
+          <!-- <button style="margin-top:15px; border-radius:25px" class="start-btn" onclick="saveBackToInsertStyle()">Save</button> -->
+          <button style="margin-top:15px; border-radius:25px" class="start-btn"
+            onclick="showHide(id={hide:'insert-style-change',show:'insert-style'})">Save</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal Third Section -->
+    <div style="margin-bottom: 150px; overflow:hidden; border-radius:20px" class="third-section modal-content3">
+      <!-- <h2>Third Section</h2> -->
+
+      <video id="play-button" controls style="background-image: linear-gradient(black, white, black)" width="640"
+        height="480">
+        <source src="media/movie.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+
+      <div class="enhance">
+        <p style="margin-top:8px">Enhance</p>
+      </div>
+      <div style="margin-top: -149px" class="icons">
+        <!-- <i style="color: red; cursor: pointer; background-color:white" class="fas fa-times delete"></i> -->
+        <div style="cursor: pointer; background-color: white; margin-left: 210px" class="delete">
+          <i style="color:red; margin-left: -11px; margin-top: -7px; position: absolute" class="fas fa-times"></i>
+        </div>
+        <i onclick="playThis()" id="play-icon"
+          style="color: white; cursor: pointer; font-size:24px; width:24px; height:24px; padding: 20px"
+          class="fas fa-play record"></i>
+        <i onclick="pauseThis()" id="pause-icon"
+          style="color: white; cursor: pointer; font-size:24px; width:24px; height:24px; padding: 20px; display: none; margin-left: 280px;"
+          class="fas fa-pause record"></i>
+        <div style="color: white; cursor: pointer; background-color: white; margin-left: 358px" class="send">
+          <i style="color:green; margin-left: -15px; margin-top: -7px; position: absolute"
+            class="fas fa-paper-plane"></i>
+        </div>
+
+      </div>
+      <div class="setting">
+        <i class="fas fa-cog"></i>
+      </div>
+      <div class="cross close">
+        <i class="fas fa-times"></i>
+      </div>
+    </div>
+
+
+
+    <script>
+      // // Get Trim modal
+      // var trimModal = document.getElementById("trimModal");
+      // var trimBtn = document.getElementById("trim");
+      var editPopUpBtn = document.getElementById("edit-popup-btn");
+      var popUpEdit = document.getElementById("popUpForEdit");
+      // Attach video Popup
+      var attachVideoBtn = document.getElementById("attach-video-popup-btn");
+      var popUpAttachVideo = document.getElementById("popUp-Attach-Video");
+      // Last section Change button click Popup
+      var lastChangeBtn = document.getElementById("change-btn-last-sec");
+      var lastChangeBtnPopUp = document.getElementById("popUp-modal-after-change-click");
+
+      // // When the user clicks the trim button, open the modal 
+      // trimBtn.onclick = function () {
+      //   trimModal.style.display = "block";
+      // }
+      // When the user clicks the trim button, open the modal (Edit popup)
+      editPopUpBtn.onclick = function () {
+        popUpEdit.style.display = "block";
+      }
+      // When the user clicks the trim button, open the modal (Attach Video popup)
+      attachVideoBtn.onclick = function () {
+        popUpAttachVideo.style.display = "block";
+      }
+      // When the user clicks the last change button, open the modal (Attach Video popup)
+      lastChangeBtn.onclick = function () {
+        lastChangeBtnPopUp.style.display = "block";
+      }
+      // // When the user clicks on <span> (x), close the modal
+      //   var trimClose = document.getElementsByClassName("trim-cross")[0];
+      //   trimClose.onclick = function () {
+      //     trimModal.style.display = "none";
+      // }
+      // When the user clicks on <span> (x), close the modal
+      var editPopUpClose = document.getElementsByClassName("trim-cross")[0];
+      editPopUpClose.onclick = function () {
+        popUpEdit.style.display = "none";
+      }
+      // When the user clicks on <span> (x), close the modal (Attach video close)
+      var attachVideoClose = document.getElementsByClassName("trim-cross")[1];
+      attachVideoClose.onclick = function () {
+        popUpAttachVideo.style.display = "none";
+      }
+      // When the user clicks on <span> (x), close the modal (Last change button Popup close)
+      var changePopUpClose = document.getElementsByClassName("trim-cross")[4];
+      changePopUpClose.onclick = function () {
+        lastChangeBtnPopUp.style.display = "none";
+      }
+
+      // // Get Attach Video modal
+      // var attachVideoModal = document.getElementById("attachModal");
+      // var attachVideoBtn = document.getElementById("attach-video-btn");
+
+      // // When the user clicks the trim button, open the modal 
+      // attachVideoBtn.onclick = function () {
+      //   attachVideoModal.style.display = "block";
+      // }
+      // // When the user clicks on <span> (x), close the modal
+      //   var trimCloseAttachVideo = document.getElementsByClassName("trim-cross")[1];
+      //   trimCloseAttachVideo.onclick = function () {
+      //     attachVideoModal.style.display = "none";
+      // }
+      // trim and attach video modal commend end here..........................
+
+
+
+
+
+      // Get the modal
+      var modal = document.getElementById("myModal");
+
+      // Get the button that opens the modal
+      var btn = document.getElementById("myBtn");
+
+      // Get the <span> element that closes the modal
+      var spanClose = document.getElementsByClassName("cross")[0];
+      var spanClose1 = document.getElementsByClassName("cross")[1];
+      var spanClose2 = document.getElementsByClassName("cross")[2];
+      var spanClose3 = document.getElementsByClassName("cross")[3];
+      var spanClose4 = document.getElementsByClassName("cross")[4];
+      var spanClose5 = document.getElementsByClassName("cross")[5];
+      var spanClose6 = document.getElementsByClassName("cross")[6];
+      var spanClose7 = document.getElementsByClassName("cross")[7];
+      var spanClose8 = document.getElementsByClassName("cross")[8];
+      var spanClose9 = document.getElementsByClassName("cross")[9];
+      var spanClose10 = document.getElementsByClassName("cross")[10];
+      var spanClose11 = document.getElementsByClassName("cross")[11];
+      var spanClose12 = document.getElementsByClassName("cross")[12];
+      var spanClose13 = document.getElementsByClassName("cross")[13];
+      var spanClose14 = document.getElementsByClassName("cross")[14];
+      var spanClose15 = document.getElementsByClassName("cross")[15];
+      var spanClose16 = document.getElementsByClassName("cross")[16];
+      var spanClose17 = document.getElementsByClassName("cross")[17];
+      var spanClose18 = document.getElementsByClassName("cross")[18];
+      var spanClose19 = document.getElementsByClassName("cross")[19];
+      var spanClose20 = document.getElementsByClassName("cross")[20];
+      var spanClose21 = document.getElementsByClassName("cross")[21];
+      var spanClose22 = document.getElementsByClassName("cross")[22];
+      var spanClose23 = document.getElementsByClassName("cross")[23];
+      var spanClose24 = document.getElementsByClassName("cross")[24];
+      var spanClose25 = document.getElementsByClassName("cross")[25];
+      var spanClose26 = document.getElementsByClassName("cross")[26];
+      var spanClose27 = document.getElementsByClassName("cross")[27];
+
+      // When the user clicks the button, open the modal 
+      btn.onclick = function () {
+        modal.style.display = "block";
+      }
+
+      // When the user clicks on <span> (x), close the modal
+      spanClose.onclick = function () {
+        modal.style.display = "none";
+      }
+      spanClose1.onclick = function () {
+        modal.style.display = "none";
+      }
+      spanClose2.onclick = function () {
+        modal.style.display = "none";
+      }
+      spanClose3.onclick = function () {
+        modal.style.display = "none";
+      }
+      spanClose4.onclick = function () {
+        modal.style.display = "none";
+      }
+      spanClose5.onclick = function () {
+        modal.style.display = "none";
+      }
+      spanClose6.onclick = function () {
+        modal.style.display = "none";
+      }
+      spanClose7.onclick = function () {
+        modal.style.display = "none";
+      }
+      spanClose8.onclick = function () {
+        modal.style.display = "none";
+      }
+      spanClose9.onclick = function () {
+        modal.style.display = "none";
+      }
+      spanClose10.onclick = function () {
+        modal.style.display = "none";
+      }
+      spanClose11.onclick = function () {
+        modal.style.display = "none";
+      }
+      spanClose12.onclick = function () {
+        modal.style.display = "none";
+      }
+      spanClose13.onclick = function () {
+        modal.style.display = "none";
+      }
+      spanClose14.onclick = function () {
+        modal.style.display = "none";
+      }
+      spanClose15.onclick = function () {
+        modal.style.display = "none";
+      }
+      spanClose16.onclick = function () {
+        modal.style.display = "none";
+      }
+      spanClose17.onclick = function () {
+        modal.style.display = "none";
+      }
+      spanClose18.onclick = function () {
+        modal.style.display = "none";
+      }
+      spanClose19.onclick = function () {
+        modal.style.display = "none";
+      }
+      spanClose20.onclick = function () {
+        modal.style.display = "none";
+      }
+      spanClose21.onclick = function () {
+        modal.style.display = "none";
+      }
+      spanClose22.onclick = function () {
+        modal.style.display = "none";
+      }
+      spanClose23.onclick = function () {
+        modal.style.display = "none";
+      }
+      spanClose24.onclick = function () {
+        modal.style.display = "none";
+      }
+      spanClose25.onclick = function () {
+        modal.style.display = "none";
+      }
+      spanClose26.onclick = function () {
+        modal.style.display = "none";
+      }
+      spanClose27.onclick = function () {
+        modal.style.display = "none";
+      }
+
+
+
+      // When the user clicks anywhere outside of the modal, close it
+      window.onclick = function (event) {
+        if (event.target == modal) {
+          modal.style.display = "none";
+        }
+      }
+
+
+
+      // video stream from here...
+
+      var video = document.querySelector("#videoElement");
+
+      if (navigator.mediaDevices.getUserMedia) {
+        navigator.mediaDevices.getUserMedia({ video: true })
+          .then(function (stream) {
+            video.srcObject = stream;
+          })
+          .catch(function (err0r) {
+            console.log("Something went wrong!");
+          });
+      }
+
+      // video2 stream from here...
+      var video2 = document.querySelector("#videoElement2");
+
+      if (navigator.mediaDevices.getUserMedia) {
+        navigator.mediaDevices.getUserMedia({ video: true })
+          .then(function (stream) {
+            video2.srcObject = stream;
+          })
+          .catch(function (err0r) {
+            console.log("Something went wrong!");
+          });
+      }
+
+      // Video play by button click
+      var playButton = document.getElementById("play-button");
+      var playIcon = document.getElementById("play-icon");
+      var pauseIcon = document.getElementById("pause-icon");
+      // Event listener for the play/pause button
+      function playThis() {
+        if (pauseIcon.style.display === "none") {
+          playButton.play();
+          playIcon.style.display = "none";
+          pauseIcon.style.display = "block";
+        }
+      }
+
+      // Video pause by button click
+      var pauseButton = document.getElementById("pause-button");
+      var pauseIcon = document.getElementById("pause-icon");
+      // Event listener for the play/pause button
+      function pauseThis() {
+        if (playIcon.style.display === "none") {
+          playButton.pause();
+          pauseIcon.style.display = "none";
+          playIcon.style.display = "block";
+          playIcon.style.marginLeft = "280px";
+        }
+      }
+
+      // Toggle Pause and Continue
+      var x = document.getElementById("pause");
+      var y = document.getElementById("continue");
+      function myFunction() {
+        x.style.display = "none";
+        y.style.display = "block"
+      }
+      function myFunctionC() {
+        x.style.display = "block";
+        y.style.display = "none";
+      }
+
+      // Toggle Video
+      var activeVideo = document.getElementById("video-active");
+      var inActiveVideo = document.getElementById("video-inactive");
+      function videoActive() {
+        activeVideo.style.display = "none";
+        inActiveVideo.style.display = "block"
+      }
+      function videoInactive() {
+        activeVideo.style.display = "block";
+        inActiveVideo.style.display = "none"
+      }
+      // Toggle Audio
+      var activeAudio = document.getElementById("audio-active");
+      var inActiveAudio = document.getElementById("audio-inactive");
+      function audioActive() {
+        activeAudio.style.display = "none";
+        inActiveAudio.style.display = "block"
+      }
+      function audioInactive() {
+        activeAudio.style.display = "block";
+        inActiveAudio.style.display = "none"
+      }
+      // Toggle Screen Share
+      var activeScreenShare = document.getElementById("screenshare-active");
+      var inActiveScreenShare = document.getElementById("screenshare-inactive");
+      function screenShareActive() {
+        activeScreenShare.style.display = "none";
+        inActiveScreenShare.style.display = "block"
+      }
+      function screenShareInactive() {
+        activeScreenShare.style.display = "block";
+        inActiveScreenShare.style.display = "none"
+      }
+      // Toggle Edit Dot
+      var justDot = document.getElementById("dot");
+      var dotWithRemove = document.getElementById("dot-with-remove");
+      function dotToRemove() {
+        justDot.style.display = "none";
+        dotWithRemove.style.display = "block";
+        console.log("clicked");
+      }
+      function removeToDot() {
+        justDot.style.display = "block";
+        dotWithRemove.style.display = "none"
+      }
+
+      /* New video Functions from here */
+      // var videoPlayer = document.querySelector('.c-video')
+      var videoNew = document.querySelector(".videoNew");
+      var juice = document.querySelector(".orange-juice");
+      var btnNewVideo = document.getElementById("play-pause");
+
+      // var currentTimeElement = videoPlayer.querySelector('.current');
+      // var durationTimeElement = videoNew.querySelector('.duration');
+
+      // console.log(videoPlayer);
+
+      function togglePlayPause() {
+        if (videoNew.paused) {
+          btnNewVideo.className = "pause";
+          videoNew.play();
+        } else {
+          btnNewVideo.className = "play";
+          videoNew.pause();
+        }
+      }
+
+      btnNewVideo.onclick = function () {
+        togglePlayPause()
+      }
+
+      videoNew.addEventListener("timeupdate", function () {
+        var juicePos = videoNew.currentTime / videoNew.duration;
+        juice.style.width = juicePos * 100 + "%";
+        if (videoNew.ended) {
+          btnNewVideo.className = "play";
+        }
+      })
+
+// current time and Duration
+// const currentTime = () => {
+//     let currentMinutes = Math.floor(videoNew.currentTime / 60)
+//     let currentSeconds = Math.floor(videoNew.currentTime  - currentMinutes * 60)
+//     let durationMinutes = Math.floor(videoNew.duration / 60)
+//     let durationSeconds = Math.floor(videoNew.duration  - durationMinutes * 60)
+
+//     currentTimeElement.innerHTML = `${currentMinutes}:${currentSeconds}`
+//     durationTimeElement.innerHTML = `${durationMinutes}:${durationSeconds}`
+//   }
+
+//   videoNew.addEventListener('timeupdate', currentTime)
+
+    </script>
+</body>
+
+</html>
