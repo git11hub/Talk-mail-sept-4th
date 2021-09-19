@@ -631,7 +631,7 @@
 
     </div>
 
-    <!-- Modal Finishing Touches (Final appearance)-->
+    <!-- Modal Finishing Touches (Final appearance) (Active)-->
     <div style="display:none" class="modal-content finishing-touches">
       <div class="">
         <div class="camera-permission" style="background:rgba(255, 192, 203, 0.198); overflow:hidden; border:none">
@@ -656,16 +656,6 @@
               </div>
             </div>
 
-            <!-- <div style="display:flex; margin-left:300px;margin-top:30px">
-              <button id="trim"
-                style="width:130px;height:37px; border:1px solid; border-radius:26px; background:white; font-family:Poppins; font-weight:800;font-size:14px; cursor:pointer"><i
-                  style="position:relative; left:-30px; font-size:16px" class="fas fa-cut"></i>Trim
-              </button>
-              <button id="attach-video-btn"
-                style="width:130px;height:37px; border:1px solid; border-radius:26px; background:white; margin-left:30px; font-family:Poppins; font-weight:800;font-size:14px; cursor:pointer"><i
-                  style="position:relative; left:-5px; font-size:16px" class="fas fa-plus-circle"></i>Attach
-                Video</button>
-            </div> -->
             <div style="position:relative; display:flex; left:295px; top:20px">
               <div id="edit-popup-btn" style="display:flex; cursor:pointer">
                 <i class="fas fa-film"></i>
@@ -751,14 +741,11 @@
             </div>
 
             <i style="font-size:30px; margin-left:100px; margin-top:15px; cursor:pointer" class="fas fa-arrow-right"
-              onclick="showHide(id={hide:'finishing-touches',show:'insert-style'})"></i>
+              onclick="showHide(id={hide:'finishing-touches',show:'insert-style-with-popup'})"></i>
           </div>
         </div>
 
         <div style="position:relative;top:-225px">
-          <!-- <div style="margin-top:-390px;margin-left:4px" class="setting">
-            <i class="fas fa-cog"></i>
-          </div> -->
           <div style="margin-top: -465px; margin-left: 879px" class="cross">
             <i class="fas fa-times"></i>
           </div>
@@ -767,7 +754,7 @@
       </div>
     </div>
 
-    <!-- Popup Edit Modal Here -->
+    <!-- Popup Edit Modal Here (Active)-->
     <div id="popUpForEdit" class="trim-modal">
       <div
         style="background:white;width:500px; height:570px;overflow: auto; margin-top: -10px;margin-left:50px; border-radius:20px; box-shadow: 0px 5px 20px 10px #888888;">
@@ -775,7 +762,47 @@
           <h3 style="margin:20px">Edit Popup</h3>
         </div>
         <div style="height:400px; background:lightgray">
-          <!-- <p style="padding:20px"><span style="color:red">Libraries /</span> Collection 1</p> -->
+          <div style="">
+            <div style="width:200px; height:150px; border-radius:25px; border:2px solid gray;margin:auto;width:40%; top:50px; position:relative">
+  
+            </div>
+  
+            <div style="display:flex; margin-top:110px; margin-left:20px">
+              <p style="position:relative; top:-18px">0:00</p>
+              <div class="middle">
+                <div class="multi-range-slider">
+                  <input type="range" id="input-left" min="0" max="100" value="25">
+                  <input type="range" id="input-right" min="0" max="100" value="75">
+              
+                  <div class="slider">
+                    <div class="track"></div>
+                    <div class="range"></div>
+                    <div class="thumb left"></div>
+                    <div class="thumb right"></div>
+                  </div>
+                </div>
+              </div>
+              <p style="position:relative; top:-18px">0:57</p>
+            </div>
+
+            <div style="display:flex; margin-left:75px; margin-top:-30px">
+              <div>
+                <p><strong>Start</strong></p>
+                <p style="margin-top:-10px">0:11</p>
+              </div>
+              <div style="margin-left:270px">
+                <p><strong>End</strong></p>
+                <p style="margin-top:-10px">0:42</p>
+              </div>
+            </div>
+
+            <div style="margin-left:160px; margin-top:-30px">
+              <button style="width:80px; background:white; padding:10px; border-radius:20px; border:1px solid gray">Preview</button>
+              <p style="margin-top:5px; margin-left:10px">0:25 s</p>
+            </div>
+
+          </div>
+
         </div>
         <div>
           <button
@@ -1854,8 +1881,8 @@
       </div>
     </div>
 
-    <!-- Modal Insert Style (Last Section with Popup) -->
-    <div style="display:none" class="modal-content insert-style">
+    <!-- Modal Insert Style (Last Section with Popup) (Active) -->
+    <div style="display:none" class="modal-content insert-style-with-popup">
       <div class="">
         <div class="camera-permission" style="background:rgba(255, 192, 203, 0.198); overflow:hidden; border:none">
 
@@ -1962,7 +1989,7 @@
                     <span class="dot" onclick="currentSlide(3)"></span> 
                   </div>
               </div>
-              <div>
+              <div onclick="showHide(id={hide:'insert-style-with-popup',show:'insert-style'})">
                 <button
                   style="border-radius:26px; background:#E20C9A; padding:10px; margin-left:350px;margin-top:10px; border:none; color:white; width:100px; cursor:pointer"
                   class="trim-cross">Save
@@ -2023,8 +2050,8 @@
       </div>
     </div>
 
-    <!-- Modal Insert Style (Last Section) -->
-    <!-- <div style="display:none" class="modal-content insert-style">
+    <!-- Modal Insert Style (Last Section) (Active) -->
+    <div style="display:none" class="modal-content insert-style">
       <div class="">
         <div class="camera-permission" style="background:rgba(255, 192, 203, 0.198); overflow:hidden; border:none">
 
@@ -2129,7 +2156,7 @@
         </div>
 
       </div>
-    </div> -->
+    </div>
 
 
 
@@ -2954,47 +2981,113 @@
         }
       })
 
-// current time and Duration
-// const currentTime = () => {
-//     let currentMinutes = Math.floor(videoNew.currentTime / 60)
-//     let currentSeconds = Math.floor(videoNew.currentTime  - currentMinutes * 60)
-//     let durationMinutes = Math.floor(videoNew.duration / 60)
-//     let durationSeconds = Math.floor(videoNew.duration  - durationMinutes * 60)
+      // current time and Duration
+      // const currentTime = () => {
+      //     let currentMinutes = Math.floor(videoNew.currentTime / 60)
+      //     let currentSeconds = Math.floor(videoNew.currentTime  - currentMinutes * 60)
+      //     let durationMinutes = Math.floor(videoNew.duration / 60)
+      //     let durationSeconds = Math.floor(videoNew.duration  - durationMinutes * 60)
 
-//     currentTimeElement.innerHTML = `${currentMinutes}:${currentSeconds}`
-//     durationTimeElement.innerHTML = `${durationMinutes}:${durationSeconds}`
-//   }
+      //     currentTimeElement.innerHTML = `${currentMinutes}:${currentSeconds}`
+      //     durationTimeElement.innerHTML = `${durationMinutes}:${durationSeconds}`
+      //   }
 
-//   videoNew.addEventListener('timeupdate', currentTime)
+      //   videoNew.addEventListener('timeupdate', currentTime)
 
 
-// Carousel
-var slideIndex = 1;
-showSlides(slideIndex);
+      // Carousel
+      var slideIndex = 1;
+      showSlides(slideIndex);
 
-function plusSlides(n) {
-  showSlides(slideIndex += n);
-}
+      function plusSlides(n) {
+        showSlides(slideIndex += n);
+      }
 
-function currentSlide(n) {
-  showSlides(slideIndex = n);
-}
+      function currentSlide(n) {
+        showSlides(slideIndex = n);
+      }
 
-function showSlides(n) {
-  var i;
-  var slides = document.getElementsByClassName("mySlides");
-  var dots = document.getElementsByClassName("dot");
-  if (n > slides.length) {slideIndex = 1}    
-  if (n < 1) {slideIndex = slides.length}
-  for (i = 0; i < slides.length; i++) {
-      slides[i].style.display = "none";  
-  }
-  for (i = 0; i < dots.length; i++) {
-      dots[i].className = dots[i].className.replace(" active", "");
-  }
-  slides[slideIndex-1].style.display = "block";  
-  dots[slideIndex-1].className += " active";
-}
+      function showSlides(n) {
+        var i;
+        var slides = document.getElementsByClassName("mySlides");
+        var dots = document.getElementsByClassName("dot");
+        if (n > slides.length) {slideIndex = 1}    
+        if (n < 1) {slideIndex = slides.length}
+        for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";  
+        }
+        for (i = 0; i < dots.length; i++) {
+            dots[i].className = dots[i].className.replace(" active", "");
+        }
+        slides[slideIndex-1].style.display = "block";  
+        dots[slideIndex-1].className += " active";
+      }
+
+
+      // Range Slider
+      var inputLeft = document.getElementById("input-left");
+      var inputRight = document.getElementById("input-right");
+
+      var thumbLeft = document.querySelector(".slider > .thumb.left");
+      var thumbRight = document.querySelector(".slider > .thumb.right");
+      var range = document.querySelector(".slider > .range");
+
+      function setLeftValue() {
+        var _this = inputLeft,
+          min = parseInt(_this.min),
+          max = parseInt(_this.max);
+
+        _this.value = Math.min(parseInt(_this.value), parseInt(inputRight.value) - 1);
+
+        var percent = ((_this.value - min) / (max - min)) * 100;
+
+        thumbLeft.style.left = percent + "%";
+        range.style.left = percent + "%";
+      }
+      setLeftValue();
+
+      function setRightValue() {
+        var _this = inputRight,
+          min = parseInt(_this.min),
+          max = parseInt(_this.max);
+
+        _this.value = Math.max(parseInt(_this.value), parseInt(inputLeft.value) + 1);
+
+        var percent = ((_this.value - min) / (max - min)) * 100;
+
+        thumbRight.style.right = (100 - percent) + "%";
+        range.style.right = (100 - percent) + "%";
+      }
+      setRightValue();
+
+      inputLeft.addEventListener("input", setLeftValue);
+      inputRight.addEventListener("input", setRightValue);
+
+      inputLeft.addEventListener("mouseover", function() {
+        thumbLeft.classList.add("hover");
+      });
+      inputLeft.addEventListener("mouseout", function() {
+        thumbLeft.classList.remove("hover");
+      });
+      inputLeft.addEventListener("mousedown", function() {
+        thumbLeft.classList.add("active");
+      });
+      inputLeft.addEventListener("mouseup", function() {
+        thumbLeft.classList.remove("active");
+      });
+
+      inputRight.addEventListener("mouseover", function() {
+        thumbRight.classList.add("hover");
+      });
+      inputRight.addEventListener("mouseout", function() {
+        thumbRight.classList.remove("hover");
+      });
+      inputRight.addEventListener("mousedown", function() {
+        thumbRight.classList.add("active");
+      });
+      inputRight.addEventListener("mouseup", function() {
+        thumbRight.classList.remove("active");
+      });
 
     </script>
 </body>

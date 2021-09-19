@@ -285,6 +285,8 @@
 }
 
 /* Carousel */
+/* Carousel */
+/* Carousel */
 * {
   box-sizing: border-box;
 }
@@ -406,4 +408,84 @@ img {
   .text {
     font-size: 11px;
   }
+}
+
+/* Range Slider */
+/* Range Slider */
+/* Range Slider */
+.middle {
+  position: relative;
+  width: 80%;
+  max-width: 500px;
+}
+
+.slider {
+  position: relative;
+  z-index: 1;
+  height: 10px;
+  margin: 0 15px;
+}
+.slider > .track {
+  position: absolute;
+  z-index: 1;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  border-radius: 5px;
+  background-color: black;
+}
+.slider > .range {
+  position: absolute;
+  z-index: 2;
+  left: 25%;
+  right: 25%;
+  top: 0;
+  bottom: 0;
+  border-radius: 5px;
+  background-color: #e20c9a;
+}
+.slider > .thumb {
+  position: absolute;
+  z-index: 3;
+  width: 30px;
+  height: 30px;
+  background-color: #e20c9a;
+  border-radius: 50%;
+  box-shadow: 0 0 0 0 rgba(98, 0, 238, 0.1);
+  transition: box-shadow 0.3s ease-in-out;
+  box-shadow: 0px 5px 15px 3px #888888;
+}
+.slider > .thumb.left {
+  left: 25%;
+  transform: translate(-15px, -10px);
+}
+.slider > .thumb.right {
+  right: 25%;
+  transform: translate(15px, -10px);
+}
+.slider > .thumb.hover {
+  box-shadow: 0 0 0 20px #e20c9b1e;
+}
+.slider > .thumb.active {
+  box-shadow: 0 0 0 40px #e20c9b3b;
+}
+
+input[type="range"] {
+  position: absolute;
+  pointer-events: none;
+  -webkit-appearance: none;
+  z-index: 2;
+  height: 10px;
+  width: 100%;
+  opacity: 0;
+}
+input[type="range"]::-webkit-slider-thumb {
+  pointer-events: all;
+  width: 30px;
+  height: 30px;
+  border-radius: 0;
+  border: 0 none;
+  background-color: red;
+  -webkit-appearance: none;
 }
