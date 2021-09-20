@@ -814,18 +814,69 @@
     </div>
 
     <!-- Popup Attach Video Modal Here (Active)-->
-    <div id="popUp-Attach-Video" class="trim-modal">
+    <div id="popUp-Attach-Video" class="trim-modal popup-attach-video">
+      <div
+        style="background:white;width:500px; height:570px;overflow: auto; margin-top: -10px;margin-left:50px; border-radius:20px; box-shadow: 0px 5px 20px 10px #888888;">
+        <div style="height:40px">
+          <h3 style="margin:20px">Attach Video Popup</h3>
+        </div>
+
+        <div style="height:400px; background:lightgray">
+          <p style="padding:20px"><span style="color:red">Libraries /</span></p>
+          <i style="position:relative; left:450px;top:-50px; font-size:20px; color:green" class="fas fa-plus-circle"></i>
+
+          <div onclick="popupShowHide(id={hide:'popup-attach-video',show:'popup-attach-video-collection1'})" style="background:white; height:80px; width:450px; border-radius:10px; margin:auto; display:flex; cursor:pointer">
+            <div style="position:relative; width:60px; height:60px; border-radius:10px; background:lightgray;border:1px solid gray; top:10px; left:10px"></div>
+              <div style="margin-left:100px">
+                <h3>Collection1</h3>
+                <P style="margin-top:-10px"><small>Shared by Ford motors</small></P>
+              </div>
+              <div>
+                <i style="font-size:30px; margin-left:70px; margin-top:25px" class="fas fa-users"></i>
+              </div>
+          </div>
+
+          <div style="background:white;position:relative; top:10px; height:80px; width:450px; border-radius:10px; margin:auto; display:flex">
+            <div style="position:relative; width:60px; height:60px; border-radius:10px; background:lightgray;border:1px solid gray; top:10px; left:10px"></div>
+            <div style="margin-left:100px">
+              <h3>My Stuff</h3>
+              <P style="margin-top:-10px"><small>local library</small></P>
+            </div>
+            <div>
+              <i style="font-size:30px; margin-left:140px; margin-top:25px" class="fas fa-user"></i>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+    
+    <!-- Popup Attach Video Modal Here Collection1 (Active)-->
+    <div id="popUp-Attach-Video-collection1" class="trim-modal popup-attach-video-collection1">
       <div
         style="background:white;width:500px; height:570px;overflow: auto; margin-top: -10px;margin-left:50px; border-radius:20px; box-shadow: 0px 5px 20px 10px #888888;">
         <div style="height:40px">
           <h3 style="margin:20px">Attach Video Popup</h3>
         </div>
         <div style="height:400px; background:lightgray">
-          <p style="padding:20px"><span style="color:red">Libraries /</span> Collection 1</p>
+          <p style="padding:20px"><span onclick="popupShowHide(id={hide:'popup-attach-video-collection1',show:'popup-attach-video'})" style="cursor:pointer; color:red">Libraries /</span> Collection 1</p>
           <i style="position:relative; left:450px;top:-50px; font-size:20px; color:green" class="fas fa-plus-circle"></i>
 
           <div style="display:flex; margin-left:5px; margin-top:-32px">
-            <div style="background:white; width:147px;height:150px; border-radius:15px; margin-left:12px">
+
+            <div onclick="toggle('inactive-toggle-1st','active-toggle-1st','attach')" id="inactive-toggle-1st" style="cursor:pointer; background:white; width:147px;height:150px; border-radius:15px; margin-left:12px">
+              <img style="width:145px; height:110px; padding:8px" src="./media/myVidLibrary/myVid1.png" alt="">
+              <div style="position:relative; text-align:left; top:-10px;left:10px">
+                <h3 style="font-family:Poppins; font-style:normal; font-weight:600; font-size:12px; line-height:1px">
+                  Video_MPGW2346</h3>
+                <small
+                  style="position:relative; font-family:Poppins; font-style:normal; font-weight:500; font-size:9px; top:-7px">12/23/2021</small>
+                <i  onclick="popupShowHide(id={hide:'popup-attach-video-collection1',show:'popup-attach-video-fixing-engine'})" style="position:relative; left:65px;top:-7px; cursor:pointer"
+                class="fas fa-ellipsis-h"></i>
+              </div>
+            </div>
+            <div onclick="toggleBack('active-toggle-1st','inactive-toggle-1st','attach')" id="active-toggle-1st" style="display:none;cursor:pointer; border:2px solid green; background:white; width:147px;height:150px; border-radius:15px; margin-left:12px">
               <img style="width:145px; height:110px; padding:8px" src="./media/myVidLibrary/myVid1.png" alt="">
               <div style="position:relative; text-align:left; top:-10px;left:10px">
                 <h3 style="font-family:Poppins; font-style:normal; font-weight:600; font-size:12px; line-height:1px">
@@ -836,7 +887,10 @@
                 class="fas fa-ellipsis-h"></i>
               </div>
             </div>
-            <div style="background:white; width:147px;height:150px; border-radius:15px; margin-left:12px">
+
+
+
+            <div onclick="toggle('inactive-toggle-2nd','active-toggle-2nd','attach')" id="inactive-toggle-2nd" style="background:white; width:147px;height:150px; border-radius:15px; margin-left:12px; cursor:pointer">
               <img style="width:145px; height:110px; padding:8px" src="./media/myVidLibrary/myVid2.png" alt="">
               <div style="position:relative; text-align:left; top:-10px;left:10px">
                 <h3 style="font-family:Poppins; font-style:normal; font-weight:600; font-size:12px; line-height:1px">
@@ -847,7 +901,19 @@
                 class="fas fa-ellipsis-h"></i>
               </div>
             </div>
-            <div style="background:white; width:147px;height:150px; border-radius:15px; margin-left:12px">
+            <div onclick="toggleBack('active-toggle-2nd','inactive-toggle-2nd','attach')" id="active-toggle-2nd" style="display:none;border:2px solid green; background:white; width:147px;height:150px; border-radius:15px; margin-left:12px; cursor:pointer">
+              <img style="width:145px; height:110px; padding:8px" src="./media/myVidLibrary/myVid2.png" alt="">
+              <div style="position:relative; text-align:left; top:-10px;left:10px">
+                <h3 style="font-family:Poppins; font-style:normal; font-weight:600; font-size:12px; line-height:1px">
+                  Video_MPGW2346</h3>
+                <small
+                  style="position:relative; font-family:Poppins; font-style:normal; font-weight:500; font-size:9px; top:-7px">12/23/2021</small>
+                <i style="position:relative; left:65px;top:-7px; cursor:pointer"
+                class="fas fa-ellipsis-h"></i>
+              </div>
+            </div>
+
+            <div onclick="toggle('inactive-toggle-3rd','active-toggle-3rd','attach')" id="inactive-toggle-3rd" style="cursor:pointer;background:white; width:147px;height:150px; border-radius:15px; margin-left:12px">
               <img style="width:145px; height:110px; padding:8px" src="./media/myVidLibrary/myVid3.png" alt="">
               <div style="position:relative; text-align:left; top:-10px;left:10px">
                 <h3 style="font-family:Poppins; font-style:normal; font-weight:600; font-size:12px; line-height:1px">
@@ -858,10 +924,23 @@
                 class="fas fa-ellipsis-h"></i>
               </div>
             </div>
+            <div onclick="toggleBack('active-toggle-3rd','inactive-toggle-3rd','attach')" id="active-toggle-3rd" style="border:2px solid green; cursor:pointer;display:none; background:white; width:147px;height:150px; border-radius:15px; margin-left:12px">
+              <img style="width:145px; height:110px; padding:8px" src="./media/myVidLibrary/myVid3.png" alt="">
+              <div style="position:relative; text-align:left; top:-10px;left:10px">
+                <h3 style="font-family:Poppins; font-style:normal; font-weight:600; font-size:12px; line-height:1px">
+                  Video_MPGW2346</h3>
+                <small
+                  style="position:relative; font-family:Poppins; font-style:normal; font-weight:500; font-size:9px; top:-7px">12/23/2021</small>
+                <i style="position:relative; left:65px;top:-7px; cursor:pointer"
+                class="fas fa-ellipsis-h"></i>
+              </div>
+            </div>
+
           </div>
 
           <div style="display:flex; margin-left:5px; margin-top:15px">
-            <div style="background:white; width:147px;height:150px; border-radius:15px; margin-left:12px">
+
+            <div onclick="toggle('inactive-toggle-4th','active-toggle-4th','attach')" id="inactive-toggle-4th" style="cursor:pointer; background:white; width:147px;height:150px; border-radius:15px; margin-left:12px">
               <img style="width:145px; height:110px; padding:8px" src="./media/myVidLibrary/myVid4.png" alt="">
               <div style="position:relative; text-align:left; top:-10px;left:10px">
                 <h3 style="font-family:Poppins; font-style:normal; font-weight:600; font-size:12px; line-height:1px">
@@ -872,7 +951,19 @@
                 class="fas fa-ellipsis-h"></i>
               </div>
             </div>
-            <div style="background:white; width:147px;height:150px; border-radius:15px; margin-left:12px">
+            <div onclick="toggleBack('active-toggle-4th','inactive-toggle-4th','attach')" id="active-toggle-4th" style="border:2px solid green;display:none; cursor:pointer;background:white; width:147px;height:150px; border-radius:15px; margin-left:12px">
+              <img style="width:145px; height:110px; padding:8px" src="./media/myVidLibrary/myVid4.png" alt="">
+              <div style="position:relative; text-align:left; top:-10px;left:10px">
+                <h3 style="font-family:Poppins; font-style:normal; font-weight:600; font-size:12px; line-height:1px">
+                  Video_MPGW2346</h3>
+                <small
+                  style="position:relative; font-family:Poppins; font-style:normal; font-weight:500; font-size:9px; top:-7px">12/23/2021</small>
+                <i style="position:relative; left:65px;top:-7px; cursor:pointer"
+                class="fas fa-ellipsis-h"></i>
+              </div>
+            </div>
+
+            <div onclick="toggle('inactive-toggle-5th','active-toggle-5th','attach')" id="inactive-toggle-5th" style="cursor:pointer; background:white; width:147px;height:150px; border-radius:15px; margin-left:12px">
               <img style="width:145px; height:110px; padding:8px" src="./media/myVidLibrary/myVid5.png" alt="">
               <div style="position:relative; text-align:left; top:-10px;left:10px">
                 <h3 style="font-family:Poppins; font-style:normal; font-weight:600; font-size:12px; line-height:1px">
@@ -883,7 +974,30 @@
                 class="fas fa-ellipsis-h"></i>
               </div>
             </div>
-            <div style="background:white; width:147px;height:150px; border-radius:15px; margin-left:12px">
+            <div onclick="toggleBack('active-toggle-5th','inactive-toggle-5th','attach')" id="active-toggle-5th" style="border:2px solid green;display:none; background:white; width:147px;height:150px; border-radius:15px; margin-left:12px">
+              <img style="width:145px; height:110px; padding:8px" src="./media/myVidLibrary/myVid5.png" alt="">
+              <div style="position:relative; text-align:left; top:-10px;left:10px">
+                <h3 style="font-family:Poppins; font-style:normal; font-weight:600; font-size:12px; line-height:1px">
+                  Video_MPGW2346</h3>
+                <small
+                  style="position:relative; font-family:Poppins; font-style:normal; font-weight:500; font-size:9px; top:-7px">12/23/2021</small>
+                <i style="position:relative; left:65px;top:-7px; cursor:pointer"
+                class="fas fa-ellipsis-h"></i>
+              </div>
+            </div>
+
+            <div onclick="toggle('inactive-toggle-6th','active-toggle-6th','attach')" id="inactive-toggle-6th" style="cursor:pointer; background:white; width:147px;height:150px; border-radius:15px; margin-left:12px">
+              <img style="width:145px; height:110px; padding:8px" src="./media/myVidLibrary/myVid6.png" alt="">
+              <div style="position:relative; text-align:left; top:-10px;left:10px">
+                <h3 style="font-family:Poppins; font-style:normal; font-weight:600; font-size:12px; line-height:1px">
+                  Video_MPGW2346</h3>
+                <small
+                  style="position:relative; font-family:Poppins; font-style:normal; font-weight:500; font-size:9px; top:-7px">12/23/2021</small>
+                <i style="position:relative; left:65px;top:-7px; cursor:pointer"
+                class="fas fa-ellipsis-h"></i>
+              </div>
+            </div>
+            <div onclick="toggleBack('active-toggle-6th','inactive-toggle-6th','attach')" id="active-toggle-6th" style="border:2px solid green;display:none; background:white; width:147px;height:150px; border-radius:15px; margin-left:12px">
               <img style="width:145px; height:110px; padding:8px" src="./media/myVidLibrary/myVid6.png" alt="">
               <div style="position:relative; text-align:left; top:-10px;left:10px">
                 <h3 style="font-family:Poppins; font-style:normal; font-weight:600; font-size:12px; line-height:1px">
@@ -913,11 +1027,41 @@
             style="border-radius:26px; background:#E20C9A; padding:10px; margin-left:350px;margin-top:10px; border:none; color:white; width:100px; cursor:pointer"
             class="trim-cross">Save
           </button> -->
-          <button
+          <button id="attach"
             style="border-radius:26px; background:gray; padding:10px; border:none; color:white; width:100px;height:40px; margin-left:220px;margin-top:20px; cursor:pointer"
             class="trim-cross">Attach
           </button>
         </div>
+      </div>
+    </div>
+
+    <!-- Popup Attach Video Modal Here (Fixing the Engine) (Active)-->
+    <div id="popUp-Attach-Video" class="trim-modal popup-attach-video-fixing-engine">
+      <div
+        style="background:white;width:500px; height:570px;overflow: auto; margin-top: -10px;margin-left:50px; border-radius:20px; box-shadow: 0px 5px 20px 10px #888888;">
+        <div style="height:40px">
+          <h3 style="margin:20px">Attach Video Popup</h3>
+        </div>
+
+        <div style="height:400px; background:lightgray">
+          <p style="padding:20px"><span style="color:red">Libraries /</span>Collection1 / Fixing the Engine</p>
+          <i style="position:relative; left:450px;top:-50px; font-size:20px; color:green" class="fas fa-plus-circle"></i>
+
+          <div style="width:200px; height:150px; margin:auto; border:1px solid gray; border-radius:10px"></div>
+
+          <div style="margin-left:50px">
+            <h4>Fixing the Engine</h4>
+            <button>Tag 1</button> <br>
+            <small>Owner: Joe Smith</small>
+          </div>
+
+        </div>
+
+        <div style="margin-top:20px; margin-left:30px">
+          <button style="background:white; border:none">Remove</button>
+          <button onclick="popupShowHide(id={hide:'popup-attach-video-fixing-engine',show:'popup-attach-video-collection1'})" style="margin-left:280px; border-radius:25px; width:100px;height:40px; border:none; background:#E20C9A; color:white; cursor:pointer">Save</button>
+        </div>
+
       </div>
     </div>
 
